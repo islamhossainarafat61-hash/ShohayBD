@@ -75,7 +75,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative isolate flex min-h-screen items-center overflow-hidden pt-16 pb-16 sm:pt-20 lg:pt-28"
+      className="relative isolate flex items-center overflow-hidden pt-8 pb-12 sm:pt-16 sm:pb-16 lg:min-h-screen lg:pt-28"
       aria-label="Hero"
     >
       {/* Background - Static (no lag) */}
@@ -85,7 +85,7 @@ export default function Hero() {
         <div className="absolute bottom-0 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-brand-200/30 blur-[100px] dark:bg-brand-800/25" />
       </div>
 
-      <div className="mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-16 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
+      <div className="mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-8 px-4 sm:gap-16 sm:px-6 lg:grid-cols-2 lg:px-8">
         {/* Left */}
         <div>
           {/* New Professional Badge Design */}
@@ -183,12 +183,12 @@ export default function Hero() {
           </motion.div>
         </div>
 
-        {/* Right - Floating dashboard (optimized animations) */}
+        {/* Right - Floating dashboard (only visible on desktop, no space on mobile) */}
         <motion.div
           initial={{ opacity: 0, x: 60 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-          className="relative mx-auto hidden h-[520px] w-full max-w-md lg:block"
+          className="relative mx-auto hidden lg:block lg:h-[520px] lg:w-full lg:max-w-md"
         >
           <motion.div
             animate={{ y: [0, -10, 0] }}
