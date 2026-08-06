@@ -5,33 +5,15 @@ import {
   type FormEvent,
   type ReactNode,
 } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowLeft, Send, Trash2, Sparkles, User } from "lucide-react";
 import { askGroq, type ChatMessage } from "../lib/groq";
 import { BRAND } from "../data/brand";
 import { useTheme } from "../context/ThemeContext";
+import { useLanguage } from "../context/LanguageContext";
 
 const STORAGE_KEY = "sohay_ai_chat_history";
-
-const WELCOME: ChatMessage = {
-  role: "assistant",
-  content:
-    "Hi! I'm SOHAY AI 👋 I can help you with booking Electrician, Plumbing, AC Service, Cleaning, Beauty, Home Shifting, House Rent and more in Rangpur. How can I help you today?",
-};
-
-const SUGGESTED_QUESTIONS = [
-  "How can I book an Electrician?",
-  "What are your service charges?",
-  "Do you provide AC repair?",
-  "How to book a Plumber?",
-  "Is home cleaning available?",
-  "What areas do you cover?",
-  "How to contact via WhatsApp?",
-  "Do you offer Beauty services at home?",
-  "What are your working hours?",
-  "How can I become a service provider?",
-];
 
 function renderMessageContent(text: string): ReactNode {
   const combinedRegex =
@@ -93,6 +75,63 @@ function renderMessageContent(text: string): ReactNode {
 
 export default function AISupport() {
   const { theme } = useTheme();
+  const { lang } = useLanguage();
+  const navigate = useNavigate();
+
+  // Localized text
+  const text = {
+    back: lang === "bn" ? "ফিরে যান" : "Back",
+    aiName: lang === "bn" ? "সহায় এআই সহকারী" : "SOHAY AI Assistant",
+    onlineNow: lang === "bn" ? "অনলাইনে" : "Online now",
+    clearChatConfirm:
+      lang === "bn"
+        ? "আপনি কি চ্যাট হিস্টোরি মুছে ফেলতে চান?"
+        : "Are you sure you want to clear the chat history?",
+    poweredBy: lang === "bn" ? "⚡ Groq দ্বারা চালিত" : "⚡ Powered by Groq",
+    suggested: lang === "bn" ? "সাজেস্টেড" : "Suggested",
+    inputPlaceholder:
+      lang === "bn"
+        ? "সার্ভিস, মূল্য বা বুকিং সম্পর্কে জিজ্ঞাসা করুন..."
+        : "Ask about a service, pricing, or booking...",
+    messageAI: lang === "bn" ? "সহায় এআই কে মেসেজ" : "Message SOHAY AI",
+  };
+
+  // Welcome message (bilingual)
+  const WELCOME: ChatMessage = {
+    role: "assistant",
+    content:
+      lang === "bn"
+        ? "হ্যালো! আমি সহায় এআই 👋 আমি আপনাকে রংপুরে ইলেকট্রিশিয়ান, প্লাম্বিং, এসি সার্ভিস, ক্লিনিং, বিউটি, হোম শিফটিং এবং আরো সার্ভিস বুক করতে সাহায্য করতে পারি। আজ কীভাবে সাহায্য করতে পারি?"
+        : "Hi! I'm SOHAY AI 👋 I can help you with booking Electrician, Plumbing, AC Service, Cleaning, Beauty, Home Shifting and more in Rangpur. How can I help you today?",
+  };
+
+  // Suggested questions (bilingual)
+  const SUGGESTED_QUESTIONS =
+    lang === "bn"
+      ? [
+          "কীভাবে ইলেকট্রিশিয়ান বুক করব?",
+          "সার্ভিস চার্জ কত?",
+          "আপনারা কি এসি রিপেয়ার করেন?",
+          "কীভাবে প্লাম্বার বুক করব?",
+          "হোম ক্লিনিং কি উপলব্ধ?",
+          "কোন এলাকায় সেবা দেন?",
+          "হোয়াটসঅ্যাপে কীভাবে যোগাযোগ করব?",
+          "বাড়িতে বিউটি সার্ভিস দেন?",
+          "কাজের সময় কি?",
+          "সার্ভিস প্রোভাইডার কীভাবে হব?",
+        ]
+      : [
+          "How can I book an Electrician?",
+          "What are your service charges?",
+          "Do you provide AC repair?",
+          "How to book a Plumber?",
+          "Is home cleaning available?",
+          "What areas do you cover?",
+          "How to contact via WhatsApp?",
+          "Do you offer Beauty services at home?",
+          "What are your working hours?",
+          "How can I become a service provider?",
+        ];
 
   const [messages, setMessages] = useState<ChatMessage[]>(() => {
     try {
@@ -122,6 +161,15 @@ export default function AISupport() {
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages, loading]);
+
+  // Smart back navigation: go back if history exists, else go home
+  const handleBack = () => {
+    if (window.history.length > 1) {
+      navigate(-1);
+    } else {
+      navigate("/");
+    }
+  };
 
   const sendMessage = async (text: string) => {
     if (!text || loading) return;
@@ -154,7 +202,7 @@ export default function AISupport() {
   };
 
   const handleClearChat = () => {
-    if (window.confirm("Are you sure you want to clear the chat history?")) {
+    if (window.confirm(text.clearChatConfirm)) {
       setMessages([WELCOME]);
       localStorage.removeItem(STORAGE_KEY);
     }
@@ -162,15 +210,15 @@ export default function AISupport() {
 
   return (
     <main className="flex h-screen flex-col bg-gradient-to-b from-brand-50/40 to-white dark:from-[#0d0819] dark:to-[#08060f]">
-      {/* Header - smaller circle, bigger icon */}
+      {/* Header */}
       <header className="sticky top-0 z-20 flex items-center justify-between border-b border-neutral-100 glass px-4 py-2.5 sm:px-8 dark:border-white/10">
         <div className="flex items-center gap-3">
-          <Link
-            to="/"
-            className="flex items-center gap-2 rounded-full border border-neutral-200 px-3 py-1.5 text-xs font-medium text-neutral-600 transition-colors hover:text-brand-600 dark:border-white/10 dark:text-neutral-300"
+          <button
+            onClick={handleBack}
+            className="flex items-center gap-2 rounded-full border border-neutral-200 px-3 py-1.5 text-xs font-medium text-neutral-600 transition-colors hover:border-brand-400 hover:text-brand-600 dark:border-white/10 dark:text-neutral-300 dark:hover:border-brand-400/50 dark:hover:text-brand-300"
           >
-            <ArrowLeft className="h-3.5 w-3.5" /> Back
-          </Link>
+            <ArrowLeft className="h-3.5 w-3.5" /> {text.back}
+          </button>
         </div>
         <div className="flex items-center gap-2.5">
           <div className="flex h-10 w-10 items-center justify-center overflow-hidden rounded-full bg-white shadow-md ring-2 ring-brand-500/30 sm:h-11 sm:w-11 dark:bg-white/5">
@@ -182,11 +230,11 @@ export default function AISupport() {
           </div>
           <div className="leading-tight">
             <p className="text-sm font-semibold text-[#111111] sm:text-base dark:text-white">
-              SOHAY AI Assistant
+              {text.aiName}
             </p>
             <p className="flex items-center gap-1.5 text-[10px] text-neutral-500 sm:text-xs dark:text-neutral-400">
               <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-green-500" />
-              Online now
+              {text.onlineNow}
             </p>
           </div>
         </div>
@@ -200,7 +248,7 @@ export default function AISupport() {
             <Trash2 className="h-4 w-4" />
           </button>
           <span className="hidden rounded-full bg-brand-500/10 px-3 py-1.5 text-[10px] font-semibold text-brand-600 sm:inline-block dark:text-brand-300">
-            ⚡ Powered by Groq
+            {text.poweredBy}
           </span>
         </div>
       </header>
@@ -277,14 +325,14 @@ export default function AISupport() {
         </div>
       </div>
 
-      {/* Suggested Questions Slider - compact */}
+      {/* Suggested Questions Slider */}
       <div className="border-t border-neutral-100 bg-white/60 px-4 py-1.5 backdrop-blur-md sm:px-8 dark:border-white/10 dark:bg-white/[0.02]">
         <div className="mx-auto max-w-3xl">
           <div className="scrollbar-hide flex items-center gap-2 overflow-x-auto">
             <div className="flex shrink-0 items-center gap-1 pr-1">
               <Sparkles className="h-3 w-3 text-brand-500" />
               <p className="text-[9px] font-semibold uppercase tracking-wider text-neutral-500 dark:text-neutral-400">
-                Suggested
+                {text.suggested}
               </p>
             </div>
             {SUGGESTED_QUESTIONS.map((q, i) => (
@@ -312,8 +360,8 @@ export default function AISupport() {
           <input
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            placeholder="Ask about a service, pricing, or booking..."
-            aria-label="Message SOHAY AI"
+            placeholder={text.inputPlaceholder}
+            aria-label={text.messageAI}
             className="w-full rounded-full border border-neutral-200 bg-white px-5 py-3 text-sm text-[#111111] focus:border-brand-400 focus:outline-none focus:ring-2 focus:ring-brand-100 dark:border-white/10 dark:bg-white/5 dark:text-white"
           />
           <motion.button

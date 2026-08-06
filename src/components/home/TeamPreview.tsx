@@ -1,7 +1,7 @@
 import type { ReactElement } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, UsersRound } from "lucide-react";
 import { teamMembers, type TeamMember } from "../../data/team";
 import { useLanguage } from "../../context/LanguageContext";
 
@@ -50,17 +50,15 @@ function SocialLink({
 }) {
   if (!href) return null;
   return (
-    <motion.a
+    <a
       href={href}
       target="_blank"
       rel="noopener noreferrer"
       aria-label={label}
-      whileHover={{ scale: 1.1, y: -2 }}
-      whileTap={{ scale: 0.95 }}
-      className="flex h-7 w-7 items-center justify-center rounded-full border border-neutral-300 bg-white text-neutral-600 shadow-sm transition-colors hover:border-brand-400 hover:bg-brand-50 hover:text-brand-600 dark:border-white/15 dark:bg-white/5 dark:text-neutral-300 dark:hover:border-brand-400/50 dark:hover:bg-brand-500/10 dark:hover:text-brand-300"
+      className="flex h-7 w-7 items-center justify-center rounded-full border border-neutral-300 bg-white text-neutral-600 shadow-sm transition-all hover:-translate-y-0.5 hover:border-brand-400 hover:bg-brand-50 hover:text-brand-600 dark:border-white/15 dark:bg-white/5 dark:text-neutral-300 dark:hover:border-brand-400/50 dark:hover:bg-brand-500/10 dark:hover:text-brand-300"
     >
       <Icon />
-    </motion.a>
+    </a>
   );
 }
 
@@ -73,10 +71,10 @@ function TeamMemberCard({
 }) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 30 }}
+      initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.3 }}
-      transition={{ delay: index * 0.08, duration: 0.5 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ delay: index * 0.06, duration: 0.4 }}
       className="group"
     >
       {/* Photo - compact size */}
@@ -140,7 +138,7 @@ export default function TeamPreview() {
   const { lang } = useLanguage();
 
   const text = {
-    badge: lang === "bn" ? "👥 আমাদের টিম" : "👥 Meet Our Team",
+    badge: lang === "bn" ? "আমাদের টিম" : "Meet Our Team",
     heading:
       lang === "bn" ? "যারা সহায় বিডি গড়ছেন" : "The People Behind SOHAY BD",
     sub:
@@ -153,25 +151,33 @@ export default function TeamPreview() {
 
   return (
     <section
-      className="relative overflow-hidden bg-brand-50/30 py-24 dark:bg-[#0d0819]"
+      className="relative overflow-hidden bg-brand-50/30 py-20 sm:py-24 dark:bg-[#0d0819]"
       aria-labelledby="team-heading"
     >
+      {/* Background - hidden on mobile for performance */}
       <div className="pointer-events-none absolute inset-0 -z-10">
-        <div className="absolute -top-20 left-1/4 h-96 w-96 rounded-full bg-brand-200/30 blur-[130px] dark:bg-brand-700/20" />
+        <div className="absolute -top-20 left-1/4 hidden h-96 w-96 rounded-full bg-brand-200/30 blur-[130px] sm:block dark:bg-brand-700/20" />
       </div>
 
       <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
         {/* Section header */}
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
+          transition={{ duration: 0.6 }}
           className="mx-auto max-w-3xl text-center"
         >
-          <span className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-xs font-semibold text-brand-700 shadow-sm dark:bg-white/5 dark:text-brand-300">
-            {text.badge}
-          </span>
+          {/* Professional Badge */}
+          <div className="inline-flex items-center gap-2.5 rounded-lg border-l-4 border-brand-500 bg-white/80 py-2 pl-3 pr-4 shadow-sm backdrop-blur-sm dark:bg-white/5">
+            <span className="flex h-6 w-6 items-center justify-center rounded-md bg-brand-500 text-white">
+              <UsersRound className="h-3.5 w-3.5" strokeWidth={2.5} />
+            </span>
+            <span className="text-xs font-semibold uppercase tracking-wide text-neutral-700 sm:text-[13px] dark:text-neutral-200">
+              {text.badge}
+            </span>
+          </div>
+
           <h2
             id="team-heading"
             className="mt-5 text-3xl font-bold text-[#111111] sm:text-4xl lg:text-5xl dark:text-white"
@@ -184,7 +190,7 @@ export default function TeamPreview() {
         </motion.div>
 
         {/* Team Grid — Mobile: 2 cols, Tablet+: 3 cols */}
-        <div className="mt-14 grid grid-cols-2 gap-4 sm:gap-6 md:grid-cols-3 md:gap-6 lg:gap-8">
+        <div className="mt-12 grid grid-cols-2 gap-4 sm:mt-14 sm:gap-6 md:grid-cols-3 md:gap-6 lg:gap-8">
           {teamMembers.map((member, i) => (
             <TeamMemberCard key={member.id} member={member} index={i} />
           ))}
@@ -195,12 +201,12 @@ export default function TeamPreview() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.4, duration: 0.6 }}
-          className="mt-14 flex justify-center"
+          transition={{ delay: 0.2, duration: 0.5 }}
+          className="mt-12 flex justify-center sm:mt-14"
         >
           <Link
             to="/about"
-            className="group inline-flex items-center gap-2 rounded-full bg-brand-500 px-8 py-3.5 text-sm font-semibold text-white shadow-[0_15px_35px_rgba(111,66,229,0.4)] transition-all hover:-translate-y-1 hover:shadow-[0_20px_45px_rgba(111,66,229,0.55)]"
+            className="group inline-flex items-center gap-2 rounded-full bg-brand-500 px-8 py-3.5 text-sm font-semibold text-white shadow-lg transition-all hover:-translate-y-1 hover:shadow-xl"
           >
             {text.viewFullAbout}
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />

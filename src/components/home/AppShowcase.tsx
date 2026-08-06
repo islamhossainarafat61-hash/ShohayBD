@@ -21,7 +21,6 @@ const appFeaturesData = [
       "একটি সুন্দর ও সহজ অ্যাপ থেকেই বুক করুন ইলেকট্রিশিয়ান, প্লাম্বিং, এসি সার্ভিস, ক্লিনিং, বিউটি সহ আরো অনেক কিছু।",
   },
   {
-    // ⚡ CHANGED: MapPin → Clock, Live Tracking → 30 Min Quick Response
     icon: Clock,
     titleEn: "30-Minute Quick Response",
     titleBn: "৩০ মিনিটে দ্রুত সাড়া",
@@ -97,14 +96,11 @@ export default function AppShowcase() {
   // Localized text for this section
   const text = {
     badge:
-      lang === "bn"
-        ? "📱 হোম সার্ভিসের ভবিষ্যৎ"
-        : "📱 The Future of Home Services",
+      lang === "bn" ? "হোম সার্ভিসের ভবিষ্যৎ" : "The Future of Home Services",
     headingStart: lang === "bn" ? "" : "The ",
     headingAccent:
       lang === "bn" ? "সহায় বিডি মোবাইল অ্যাপ" : "SOHAY BD Mobile App",
     headingEnd: lang === "bn" ? " খুব শীঘ্রই আসছে" : " Is Almost Here",
-    // ⚡ CHANGED: Removed "live tracking" reference, added "30 minute promise"
     subPart1:
       lang === "bn"
         ? "আমরা একটি শক্তিশালী মোবাইল অ্যাপ তৈরি করছি যা সহায় বিডি-এর প্রতিটি সার্ভিসকে নিয়ে আসবে আপনার হাতের মুঠোয়। কয়েক সেকেন্ডে বুক করুন ইলেকট্রিশিয়ান, প্লাম্বার, এসি টেকনিশিয়ান, হোম ক্লিনার, বিউটিশিয়ান বা হোম শিফটিং টিম — এবং উপভোগ করুন আমাদের "
@@ -122,12 +118,9 @@ export default function AppShowcase() {
     appStoreDownload: lang === "bn" ? "ডাউনলোড করুন" : "DOWNLOAD ON THE",
     appStoreName: lang === "bn" ? "অ্যাপ স্টোর" : "App Store",
     comingSoon: lang === "bn" ? "শীঘ্রই আসছে" : "Coming Soon",
-    // ⚡ CHANGED: "Live Tracking" → "Quick Response"
-    quickResponseLabel: lang === "bn" ? "দ্রুত সাড়া ⚡" : "Quick Response ⚡",
-    // ⚡ CHANGED: "Technician arriving in 8 min" → "30 min promise"
+    quickResponseLabel: lang === "bn" ? "দ্রুত সাড়া" : "Quick Response",
     professionalArriving:
       lang === "bn" ? "৩০ মিনিটে পৌঁছাবে ✓" : "Arriving within 30 min ✓",
-    // App mockup service names
     appServices:
       lang === "bn"
         ? ["ইলেকট্রিশিয়ান", "প্লাম্বিং", "এসি সার্ভিস", "হোম ক্লিনিং"]
@@ -137,23 +130,31 @@ export default function AppShowcase() {
   return (
     <section
       id="app"
-      className="relative overflow-hidden bg-white py-24 dark:bg-[#08060f]"
+      className="relative overflow-hidden bg-white py-20 sm:py-24 dark:bg-[#08060f]"
       aria-labelledby="app-heading"
     >
+      {/* Background - hidden on mobile for performance */}
       <div className="pointer-events-none absolute inset-0 -z-10">
-        <div className="absolute left-1/2 top-0 h-96 w-[42rem] -translate-x-1/2 rounded-full bg-brand-300/25 blur-[130px] dark:bg-brand-700/20" />
+        <div className="absolute left-1/2 top-0 hidden h-96 w-[42rem] -translate-x-1/2 rounded-full bg-brand-300/25 blur-[130px] sm:block dark:bg-brand-700/20" />
       </div>
 
-      <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-16 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
+      <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-4 sm:gap-16 sm:px-6 lg:grid-cols-2 lg:px-8">
         <motion.div
-          initial={{ opacity: 0, x: -40 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.8 }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.6 }}
         >
-          <span className="inline-flex items-center gap-2 rounded-full bg-brand-50 px-4 py-2 text-xs font-semibold text-brand-700 dark:bg-brand-500/10 dark:text-brand-300">
-            {text.badge}
-          </span>
+          {/* Professional Badge */}
+          <div className="inline-flex items-center gap-2.5 rounded-lg border-l-4 border-brand-500 bg-white/80 py-2 pl-3 pr-4 shadow-sm backdrop-blur-sm dark:bg-white/5">
+            <span className="flex h-6 w-6 items-center justify-center rounded-md bg-brand-500 text-white">
+              <Smartphone className="h-3.5 w-3.5" strokeWidth={2.5} />
+            </span>
+            <span className="text-xs font-semibold uppercase tracking-wide text-neutral-700 sm:text-[13px] dark:text-neutral-200">
+              {text.badge}
+            </span>
+          </div>
+
           <h2
             id="app-heading"
             className="mt-5 text-3xl font-bold leading-tight text-[#111111] sm:text-4xl lg:text-5xl dark:text-white"
@@ -170,7 +171,7 @@ export default function AppShowcase() {
             {text.subPart3}
           </p>
 
-          <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
+          <div className="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4">
             {appFeaturesData.map((f, i) => {
               const title = lang === "bn" ? f.titleBn : f.titleEn;
               const desc = lang === "bn" ? f.descBn : f.descEn;
@@ -179,12 +180,12 @@ export default function AppShowcase() {
                   key={f.titleEn}
                   initial={{ opacity: 0, y: 16 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.08, duration: 0.5 }}
+                  viewport={{ once: true, amount: 0.2 }}
+                  transition={{ delay: i * 0.05, duration: 0.4 }}
                   className="flex items-start gap-3 rounded-2xl border border-neutral-100 bg-white/60 p-4 shadow-sm dark:border-white/10 dark:bg-white/5"
                 >
                   <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-brand-500/10 text-brand-600 dark:text-brand-300">
-                    <f.icon className="h-4.5 w-4.5" />
+                    <f.icon className="h-4 w-4" />
                   </span>
                   <div>
                     <p className="text-sm font-semibold text-[#111111] dark:text-white">
@@ -200,12 +201,10 @@ export default function AppShowcase() {
           </div>
 
           <div className="mt-10 flex flex-wrap items-center gap-4">
-            <motion.a
+            <a
               href="#app"
               onClick={(e) => e.preventDefault()}
-              whileHover={{ scale: 1.04, y: -3 }}
-              whileTap={{ scale: 0.96 }}
-              className="flex items-center gap-3 rounded-2xl border border-neutral-200 bg-[#111111] px-5 py-3 text-white shadow-lg dark:border-white/10"
+              className="flex items-center gap-3 rounded-2xl border border-neutral-200 bg-[#111111] px-5 py-3 text-white shadow-md transition-all hover:-translate-y-1 hover:shadow-lg dark:border-white/10"
             >
               <PlayStoreMark />
               <span className="text-left leading-tight">
@@ -219,13 +218,11 @@ export default function AppShowcase() {
                   {text.comingSoon}
                 </span>
               </span>
-            </motion.a>
-            <motion.a
+            </a>
+            <a
               href="#app"
               onClick={(e) => e.preventDefault()}
-              whileHover={{ scale: 1.04, y: -3 }}
-              whileTap={{ scale: 0.96 }}
-              className="flex items-center gap-3 rounded-2xl border border-neutral-200 bg-[#111111] px-5 py-3 text-white shadow-lg dark:border-white/10"
+              className="flex items-center gap-3 rounded-2xl border border-neutral-200 bg-[#111111] px-5 py-3 text-white shadow-md transition-all hover:-translate-y-1 hover:shadow-lg dark:border-white/10"
             >
               <AppStoreMark />
               <span className="text-left leading-tight">
@@ -239,21 +236,23 @@ export default function AppShowcase() {
                   {text.comingSoon}
                 </span>
               </span>
-            </motion.a>
+            </a>
           </div>
         </motion.div>
 
+        {/* Phone mockup - simpler animation for mobile performance */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.9 }}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.7 }}
           className="relative mx-auto flex h-[520px] w-full max-w-xs items-center justify-center"
         >
           <motion.div
-            animate={{ y: [0, -14, 0] }}
-            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-            className="relative h-[480px] w-64 rounded-[42px] border-8 border-[#111111] bg-[#111111] shadow-[0_40px_90px_rgba(111,66,229,0.35)]"
+            animate={{ y: [0, -10, 0] }}
+            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+            style={{ willChange: "transform" }}
+            className="relative h-[480px] w-64 rounded-[42px] border-8 border-[#111111] bg-[#111111] shadow-xl"
           >
             <div className="absolute left-1/2 top-0 h-5 w-24 -translate-x-1/2 rounded-b-2xl bg-[#111111]" />
             <div className="h-full w-full overflow-hidden rounded-[34px] bg-gradient-to-br from-brand-600 via-brand-500 to-brand-700 p-4">
@@ -271,9 +270,10 @@ export default function AppShowcase() {
                   </div>
                 ))}
               </div>
-              {/* ⚡ CHANGED: Live Tracking box → Quick Response box */}
+              {/* Quick Response box */}
               <div className="mt-6 rounded-2xl bg-white/95 p-3">
-                <p className="text-[10px] font-bold text-brand-600">
+                <p className="flex items-center gap-1 text-[10px] font-bold text-brand-600">
+                  <Clock className="h-3 w-3" strokeWidth={2.5} />
                   {text.quickResponseLabel}
                 </p>
                 <p className="mt-1 text-xs font-bold text-[#111111]">
@@ -282,18 +282,15 @@ export default function AppShowcase() {
                 <div className="mt-2 h-1.5 w-full rounded-full bg-brand-100">
                   <motion.div
                     animate={{ width: ["10%", "80%", "10%"] }}
-                    transition={{ duration: 4, repeat: Infinity }}
+                    transition={{ duration: 5, repeat: Infinity }}
                     className="h-full rounded-full bg-brand-500"
                   />
                 </div>
               </div>
             </div>
           </motion.div>
-          <motion.span
-            animate={{ opacity: [0.4, 0.8, 0.4] }}
-            transition={{ duration: 4, repeat: Infinity }}
-            className="absolute -z-10 h-80 w-80 rounded-full bg-brand-400/30 blur-[100px]"
-          />
+          {/* Background glow - static */}
+          <div className="absolute -z-10 h-80 w-80 rounded-full bg-brand-400/25 blur-[100px]" />
         </motion.div>
       </div>
     </section>

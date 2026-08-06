@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, HelpCircle } from "lucide-react";
 import { useLanguage } from "../../context/LanguageContext";
 
 // FAQ data with both English and Bangla versions
@@ -49,7 +49,7 @@ export default function FAQ() {
 
   // Localized headings
   const text = {
-    badge: lang === "bn" ? "❓ প্রশ্নোত্তর" : "❓ FAQ",
+    badge: lang === "bn" ? "প্রশ্নোত্তর" : "FAQ",
     headingStart: lang === "bn" ? "প্রশ্ন আছে? " : "Got Questions? ",
     headingAccent:
       lang === "bn" ? "আমাদের কাছে উত্তর আছে।" : "We've Got Answers.",
@@ -58,30 +58,37 @@ export default function FAQ() {
   return (
     <section
       id="faq"
-      className="relative bg-white py-24 dark:bg-[#08060f]"
+      className="relative bg-white py-20 sm:py-24 dark:bg-[#08060f]"
       aria-labelledby="faq-heading"
     >
       <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
+          transition={{ duration: 0.6 }}
           className="text-center"
         >
-          <span className="inline-flex items-center gap-2 rounded-full bg-brand-50 px-4 py-2 text-xs font-semibold text-brand-700 dark:bg-brand-500/10 dark:text-brand-300">
-            {text.badge}
-          </span>
+          {/* Professional Badge */}
+          <div className="inline-flex items-center gap-2.5 rounded-lg border-l-4 border-brand-500 bg-white/80 py-2 pl-3 pr-4 shadow-sm backdrop-blur-sm dark:bg-white/5">
+            <span className="flex h-6 w-6 items-center justify-center rounded-md bg-brand-500 text-white">
+              <HelpCircle className="h-3.5 w-3.5" strokeWidth={2.5} />
+            </span>
+            <span className="text-xs font-semibold uppercase tracking-wide text-neutral-700 sm:text-[13px] dark:text-neutral-200">
+              {text.badge}
+            </span>
+          </div>
+
           <h2
             id="faq-heading"
             className="mt-5 text-3xl font-bold text-[#111111] sm:text-4xl dark:text-white"
           >
             {text.headingStart}
-            <span className="gradient-text">{text.headingAccent}</span>
+            <span>{text.headingAccent}</span>
           </h2>
         </motion.div>
 
-        <div className="mt-12 space-y-4">
+        <div className="mt-10 space-y-3 sm:mt-12 sm:space-y-4">
           {faqsData.map((item, i) => {
             const isOpen = open === i;
             const question = lang === "bn" ? item.qBn : item.qEn;
@@ -92,21 +99,21 @@ export default function FAQ() {
                 key={item.qEn}
                 initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.3 }}
-                transition={{ delay: i * 0.05, duration: 0.5 }}
-                className="overflow-hidden rounded-2xl border border-neutral-100 bg-white shadow-sm dark:border-white/10 dark:bg-white/[0.03]"
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ delay: i * 0.04, duration: 0.4 }}
+                className="overflow-hidden rounded-2xl border border-neutral-100 bg-white shadow-sm transition-colors hover:border-brand-200 dark:border-white/10 dark:bg-white/[0.03] dark:hover:border-brand-500/40"
               >
                 <button
                   onClick={() => setOpen(isOpen ? null : i)}
                   aria-expanded={isOpen}
-                  className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left"
+                  className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left sm:px-6 sm:py-5"
                 >
                   <span className="text-sm font-semibold text-[#111111] sm:text-base dark:text-white">
                     {question}
                   </span>
                   <motion.span
                     animate={{ rotate: isOpen ? 180 : 0 }}
-                    transition={{ duration: 0.3 }}
+                    transition={{ duration: 0.25 }}
                     className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand-500/10 text-brand-600 dark:text-brand-300"
                   >
                     <ChevronDown className="h-4 w-4" />
@@ -119,10 +126,10 @@ export default function FAQ() {
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.3, ease: "easeInOut" }}
+                      transition={{ duration: 0.25, ease: "easeInOut" }}
                       className="overflow-hidden"
                     >
-                      <p className="px-6 pb-5 text-sm leading-relaxed text-neutral-500 dark:text-neutral-400">
+                      <p className="px-5 pb-5 text-sm leading-relaxed text-neutral-500 sm:px-6 dark:text-neutral-400">
                         {answer}
                       </p>
                     </motion.div>

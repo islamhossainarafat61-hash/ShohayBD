@@ -16,8 +16,20 @@
   --font-sans: "Poppins", "Hind Siliguri", ui-sans-serif, system-ui, sans-serif;
 }
 
+/* 
+  IMPORTANT: scroll-behavior is set to 'auto' (default) so browser back button
+  restores scroll position instantly, not with a smooth animation.
+  Smooth scrolling only happens when user explicitly interacts (via :focus-within
+  on anchor clicks or JS scrollIntoView calls).
+*/
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: auto;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html:focus-within {
+    scroll-behavior: smooth;
+  }
 }
 
 body {
@@ -116,4 +128,87 @@ body {
 }
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
+}
+
+/* 
+  Hide floating widgets (AI + WhatsApp) when mobile drawer is open.
+  Body gets 'drawer-open' class from Navbar.tsx when menu opens.
+*/
+body.drawer-open .fixed.z-40 {
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
+  transform: translateX(20px);
+}
+
+/* 
+  Circular Theme Reveal Animation
+  Using View Transitions API
+  - Dark mode: New theme circle EXPANDS from button
+  - Light mode: Old theme circle SHRINKS back to button
+*/
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+/* 
+  DARK MODE (Light → Dark): 
+  Dark theme (new) grows from button 
+*/
+html:not(.dark)::view-transition-new(root) {
+  animation: circle-expand 0.55s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+  z-index: 2;
+}
+
+html:not(.dark)::view-transition-old(root) {
+  animation: none;
+  z-index: 1;
+}
+
+/* 
+  LIGHT MODE (Dark → Light): 
+  Dark theme (old) shrinks INTO button, revealing light beneath 
+*/
+html.dark::view-transition-old(root) {
+  animation: circle-shrink 0.55s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+  z-index: 2;
+}
+
+html.dark::view-transition-new(root) {
+  animation: none;
+  z-index: 1;
+}
+
+/* Circle expanding out from button (for entering dark mode) */
+@keyframes circle-expand {
+  from {
+    clip-path: circle(0% at var(--click-x, 50%) var(--click-y, 50%));
+  }
+  to {
+    clip-path: circle(150% at var(--click-x, 50%) var(--click-y, 50%));
+  }
+}
+
+/* Circle shrinking back into button (for entering light mode) */
+@keyframes circle-shrink {
+  from {
+    clip-path: circle(150% at var(--click-x, 50%) var(--click-y, 50%));
+  }
+  to {
+    clip-path: circle(0% at var(--click-x, 50%) var(--click-y, 50%));
+  }
+}
+
+/* Prevent flicker & maintain color scheme */
+.dark {
+  color-scheme: dark;
+}
+
+html {
+  color-scheme: light;
 }

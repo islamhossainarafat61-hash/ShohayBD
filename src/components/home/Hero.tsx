@@ -1,13 +1,12 @@
 import { motion, type Variants } from "framer-motion";
 import {
-  Sparkles,
   ShieldCheck,
   Zap,
   Star,
-  ChevronDown,
   ArrowRight,
   MapPin,
-  Smartphone,
+  Sparkles,
+  Headphones,
 } from "lucide-react";
 import { useLanguage } from "../../context/LanguageContext";
 import {
@@ -34,7 +33,7 @@ const trustBadgesData = [
     labelBn: "নিরাপদ সার্ভিস",
   },
   {
-    icon: Sparkles,
+    icon: Headphones,
     labelEn: "Customer Support",
     labelBn: "গ্রাহক সাপোর্ট",
   },
@@ -56,7 +55,7 @@ const fadeUp: Variants = {
 export default function Hero() {
   const { t, lang } = useLanguage();
 
-  // Localized floating dashboard cards & other UI text
+  // Localized floating dashboard cards text
   const heroText = {
     bookingConfirmed: lang === "bn" ? "বুকিং কনফার্ম" : "Booking Confirmed",
     electricianVisit:
@@ -66,58 +65,43 @@ export default function Hero() {
     professionalName: lang === "bn" ? "রাকিবুল ইসলাম" : "Rakibul Islam",
     professionalRole:
       lang === "bn" ? "দক্ষ ইলেকট্রিশিয়ান" : "Expert Electrician",
-    quickResponse: lang === "bn" ? "দ্রুত সাড়া ⚡" : "Quick Response ⚡",
+    quickResponse: lang === "bn" ? "দ্রুত সাড়া" : "Quick Response",
     arrivingIn30:
       lang === "bn"
         ? "পেশাদার ৩০ মিনিটে পৌঁছাবে ✓"
         : "Professional arriving within 30 min ✓",
-    appBannerText:
-      lang === "bn"
-        ? "🚀 সহায় বিডি মোবাইল অ্যাপ — "
-        : "🚀 SOHAY BD Mobile App — ",
-    appComingSoon: lang === "bn" ? "শীঘ্রই আসছে!" : "Coming Soon!",
-    scrollLabel: lang === "bn" ? "স্ক্রল করুন" : "Scroll",
   };
 
   return (
     <section
       id="home"
-      className="relative isolate flex min-h-screen items-center overflow-hidden pt-28 pb-16"
+      className="relative isolate flex min-h-screen items-center overflow-hidden pt-16 pb-16 sm:pt-20 lg:pt-28"
       aria-label="Hero"
     >
-      {/* Background */}
+      {/* Background - Static (no lag) */}
       <div className="pointer-events-none absolute inset-0 -z-10 bg-white dark:bg-[#08060f]">
-        <div className="absolute inset-0 noise-bg" />
-        <motion.div
-          animate={{ x: [0, 40, 0], y: [0, 30, 0] }}
-          transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute -top-32 -left-32 h-[28rem] w-[28rem] rounded-full bg-brand-300/40 blur-[110px] dark:bg-brand-700/30"
-        />
-        <motion.div
-          animate={{ x: [0, -30, 0], y: [0, -20, 0] }}
-          transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-1/3 -right-24 h-[26rem] w-[26rem] rounded-full bg-brand-400/30 blur-[110px] dark:bg-brand-600/25"
-        />
-        <motion.div
-          animate={{ scale: [1, 1.15, 1], opacity: [0.5, 0.8, 0.5] }}
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute bottom-0 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-brand-200/40 blur-[100px] dark:bg-brand-800/30"
-        />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,rgba(111,66,229,0.15)_1px,transparent_0)] bg-[size:32px_32px] opacity-40 [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_20%,transparent_100%)]" />
+        <div className="absolute -top-32 -left-32 h-[28rem] w-[28rem] rounded-full bg-brand-300/30 blur-[110px] dark:bg-brand-700/25" />
+        <div className="absolute top-1/3 -right-24 h-[26rem] w-[26rem] rounded-full bg-brand-400/25 blur-[110px] dark:bg-brand-600/20" />
+        <div className="absolute bottom-0 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-brand-200/30 blur-[100px] dark:bg-brand-800/25" />
       </div>
 
       <div className="mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-16 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
         {/* Left */}
         <div>
+          {/* New Professional Badge Design */}
           <motion.div
             initial="hidden"
             animate="show"
             custom={0}
             variants={fadeUp}
-            className="inline-flex items-center gap-2 rounded-full glass px-4 py-2 text-xs font-semibold text-brand-700 shadow-sm dark:text-brand-200"
+            className="inline-flex items-center gap-2.5 rounded-lg border-l-4 border-brand-500 bg-white/80 py-2 pl-3 pr-4 shadow-sm backdrop-blur-sm dark:bg-white/5"
           >
-            <MapPin className="h-3.5 w-3.5" />
-            <span>✨ {t.heroBadge}</span>
+            <span className="flex h-6 w-6 items-center justify-center rounded-md bg-brand-500 text-white">
+              <MapPin className="h-3.5 w-3.5" strokeWidth={2.5} />
+            </span>
+            <span className="text-xs font-semibold uppercase tracking-wide text-neutral-700 sm:text-[13px] dark:text-neutral-200">
+              {t.heroBadge}
+            </span>
           </motion.div>
 
           <motion.h1
@@ -142,24 +126,24 @@ export default function Hero() {
             {t.heroSub}
           </motion.p>
 
+          {/* Buttons — always in single row (even on mobile) */}
           <motion.div
             initial="hidden"
             animate="show"
             custom={3}
             variants={fadeUp}
-            className="mt-9 flex flex-wrap items-center gap-4"
+            className="mt-9 flex items-center gap-3 sm:gap-4"
           >
             <motion.a
               href={buildWhatsappLink(GENERAL_WHATSAPP_MESSAGE)}
               target="_blank"
               rel="noopener noreferrer"
-              whileHover={{ y: -4, scale: 1.03 }}
+              whileHover={{ y: -2 }}
               whileTap={{ scale: 0.97 }}
-              className="group relative flex items-center gap-2 overflow-hidden rounded-full bg-brand-500 px-8 py-4 text-sm font-semibold text-white shadow-[0_15px_40px_rgba(111,66,229,0.4)] transition-shadow hover:shadow-[0_20px_50px_rgba(111,66,229,0.6)]"
+              className="flex flex-1 items-center justify-center gap-2 rounded-full bg-brand-500 px-4 py-3.5 text-sm font-semibold text-white shadow-[0_10px_30px_rgba(111,66,229,0.35)] transition-shadow hover:shadow-[0_15px_40px_rgba(111,66,229,0.5)] sm:flex-none sm:px-8 sm:py-4"
             >
-              <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
-              {t.heroPrimary}
-              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+              <span className="whitespace-nowrap">{t.heroPrimary}</span>
+              <ArrowRight className="h-4 w-4 shrink-0" />
             </motion.a>
             <motion.a
               href="#services"
@@ -167,11 +151,11 @@ export default function Hero() {
                 e.preventDefault();
                 scrollToId("services");
               }}
-              whileHover={{ y: -4 }}
+              whileHover={{ y: -2 }}
               whileTap={{ scale: 0.97 }}
-              className="rounded-full border border-neutral-300 px-8 py-4 text-sm font-semibold text-neutral-800 transition-colors hover:border-brand-400 hover:text-brand-600 dark:border-white/15 dark:text-white dark:hover:text-brand-300"
+              className="flex flex-1 items-center justify-center rounded-full border border-brand-200 bg-brand-50 px-4 py-3.5 text-sm font-semibold text-brand-700 transition-colors hover:border-brand-400 hover:bg-brand-100 sm:flex-none sm:px-8 sm:py-4 dark:border-brand-500/30 dark:bg-brand-500/10 dark:text-brand-200 dark:hover:border-brand-400/50 dark:hover:bg-brand-500/20"
             >
-              {t.heroSecondary}
+              <span className="whitespace-nowrap">{t.heroSecondary}</span>
             </motion.a>
           </motion.div>
 
@@ -189,61 +173,17 @@ export default function Hero() {
                   key={b.labelEn}
                   className="flex items-center gap-2 text-sm text-neutral-600 dark:text-neutral-300"
                 >
-                  <motion.span
-                    animate={{ y: [0, -3, 0] }}
-                    transition={{
-                      duration: 2.5,
-                      repeat: Infinity,
-                      ease: "easeInOut",
-                    }}
-                    className="flex h-8 w-8 items-center justify-center rounded-full bg-brand-50 text-brand-600 dark:bg-brand-500/10 dark:text-brand-300"
-                  >
+                  <span className="flex h-8 w-8 items-center justify-center rounded-full bg-brand-50 text-brand-600 dark:bg-brand-500/10 dark:text-brand-300">
                     <b.icon className="h-4 w-4" />
-                  </motion.span>
+                  </span>
                   {label}
                 </div>
               );
             })}
           </motion.div>
-
-          {/* App Coming Soon banner */}
-          <motion.a
-            href="#app"
-            onClick={(e) => {
-              e.preventDefault();
-              scrollToId("app");
-            }}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6, duration: 0.7 }}
-            className="relative mt-10 flex max-w-xl items-center gap-4 overflow-hidden rounded-2xl border border-brand-200 bg-gradient-to-r from-brand-50 via-white to-brand-50 px-5 py-4 shadow-sm dark:border-brand-500/20 dark:from-brand-500/10 dark:via-transparent dark:to-brand-500/10"
-          >
-            <motion.span
-              animate={{ opacity: [0.5, 1, 0.5], scale: [1, 1.06, 1] }}
-              transition={{
-                duration: 2.5,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-              className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-brand-500 text-white shadow-[0_8px_20px_rgba(111,66,229,0.5)]"
-            >
-              <Smartphone className="h-5 w-5" />
-            </motion.span>
-            <p className="text-sm font-semibold text-neutral-800 dark:text-neutral-100">
-              {heroText.appBannerText}
-              <span className="text-brand-600 dark:text-brand-300">
-                {heroText.appComingSoon}
-              </span>
-            </p>
-            <motion.span
-              className="absolute inset-0 -z-10 rounded-2xl bg-brand-400/20 blur-xl"
-              animate={{ opacity: [0.3, 0.6, 0.3] }}
-              transition={{ duration: 3, repeat: Infinity }}
-            />
-          </motion.a>
         </div>
 
-        {/* Right - Floating dashboard */}
+        {/* Right - Floating dashboard (optimized animations) */}
         <motion.div
           initial={{ opacity: 0, x: 60 }}
           animate={{ opacity: 1, x: 0 }}
@@ -251,9 +191,10 @@ export default function Hero() {
           className="relative mx-auto hidden h-[520px] w-full max-w-md lg:block"
         >
           <motion.div
-            animate={{ y: [0, -14, 0] }}
-            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute left-2 top-6 w-72 rounded-3xl glass-panel p-5 shadow-[0_25px_60px_rgba(111,66,229,0.25)]"
+            animate={{ y: [0, -10, 0] }}
+            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+            style={{ willChange: "transform" }}
+            className="absolute left-2 top-6 w-72 rounded-3xl glass-panel p-5 shadow-[0_25px_60px_rgba(111,66,229,0.2)]"
           >
             <p className="text-xs font-medium text-neutral-400">
               {heroText.bookingConfirmed}
@@ -268,14 +209,15 @@ export default function Hero() {
           </motion.div>
 
           <motion.div
-            animate={{ y: [0, 16, 0] }}
+            animate={{ y: [0, 12, 0] }}
             transition={{
-              duration: 7,
+              duration: 9,
               repeat: Infinity,
               ease: "easeInOut",
               delay: 0.5,
             }}
-            className="absolute right-0 top-40 w-64 rounded-3xl glass-panel p-5 shadow-[0_25px_60px_rgba(111,66,229,0.25)]"
+            style={{ willChange: "transform" }}
+            className="absolute right-0 top-40 w-64 rounded-3xl glass-panel p-5 shadow-[0_25px_60px_rgba(111,66,229,0.2)]"
           >
             <div className="flex items-center gap-3">
               <div className="h-11 w-11 shrink-0 rounded-full bg-gradient-to-br from-brand-400 to-brand-600" />
@@ -297,23 +239,27 @@ export default function Hero() {
           </motion.div>
 
           <motion.div
-            animate={{ y: [0, -10, 0] }}
+            animate={{ y: [0, -8, 0] }}
             transition={{
-              duration: 5.5,
+              duration: 8,
               repeat: Infinity,
               ease: "easeInOut",
               delay: 1,
             }}
-            className="absolute bottom-10 left-6 w-60 rounded-3xl glass-panel p-5 shadow-[0_25px_60px_rgba(111,66,229,0.25)]"
+            style={{ willChange: "transform" }}
+            className="absolute bottom-10 left-6 w-60 rounded-3xl glass-panel p-5 shadow-[0_25px_60px_rgba(111,66,229,0.2)]"
           >
-            <p className="text-xs font-semibold text-brand-600 dark:text-brand-300">
-              {heroText.quickResponse}
-            </p>
+            <div className="flex items-center gap-1.5">
+              <Zap className="h-3.5 w-3.5 text-brand-500" fill="currentColor" />
+              <p className="text-xs font-semibold text-brand-600 dark:text-brand-300">
+                {heroText.quickResponse}
+              </p>
+            </div>
             <div className="mt-3 h-1.5 w-full overflow-hidden rounded-full bg-brand-100 dark:bg-white/10">
               <motion.div
                 animate={{ width: ["20%", "85%", "20%"] }}
                 transition={{
-                  duration: 4,
+                  duration: 5,
                   repeat: Infinity,
                   ease: "easeInOut",
                 }}
@@ -326,57 +272,34 @@ export default function Hero() {
           </motion.div>
 
           <motion.div
-            animate={{ y: [0, 12, 0] }}
+            animate={{ y: [0, 10, 0] }}
             transition={{
-              duration: 6.5,
+              duration: 9,
               repeat: Infinity,
               ease: "easeInOut",
               delay: 1.5,
             }}
-            className="absolute bottom-0 right-4 grid w-52 grid-cols-3 gap-2 rounded-3xl glass-panel p-4 shadow-[0_25px_60px_rgba(111,66,229,0.25)]"
+            style={{ willChange: "transform" }}
+            className="absolute bottom-0 right-4 grid w-52 grid-cols-3 gap-2 rounded-3xl glass-panel p-4 shadow-[0_25px_60px_rgba(111,66,229,0.2)]"
           >
-            {["⚡", "🚰", "❄️", "🧹", "💇", "🚚"].map((e) => (
+            {[
+              { icon: Zap, color: "text-yellow-500" },
+              { icon: ShieldCheck, color: "text-blue-500" },
+              { icon: Star, color: "text-amber-500" },
+              { icon: Sparkles, color: "text-brand-500" },
+              { icon: Headphones, color: "text-green-500" },
+              { icon: MapPin, color: "text-red-500" },
+            ].map((item, i) => (
               <div
-                key={e}
-                className="flex h-12 items-center justify-center rounded-xl bg-brand-50 text-lg dark:bg-white/5"
+                key={i}
+                className={`flex h-12 items-center justify-center rounded-xl bg-brand-50 ${item.color} dark:bg-white/5`}
               >
-                {e}
+                <item.icon className="h-5 w-5" strokeWidth={2} />
               </div>
             ))}
           </motion.div>
-
-          <div className="absolute inset-0 -z-10 rounded-full bg-brand-400/20 blur-[100px]" />
         </motion.div>
       </div>
-
-      <motion.a
-        href="#app"
-        onClick={(e) => {
-          e.preventDefault();
-          scrollToId("app");
-        }}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.2 }}
-        aria-label="Scroll down"
-        className="absolute bottom-6 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 text-neutral-400 sm:flex"
-      >
-        <span className="text-[10px] font-medium uppercase tracking-widest">
-          {heroText.scrollLabel}
-        </span>
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
-          className="flex h-9 w-6 items-start justify-center rounded-full border border-neutral-300 p-1 dark:border-white/20"
-        >
-          <motion.span
-            animate={{ y: [0, 10, 0], opacity: [1, 0, 1] }}
-            transition={{ duration: 1.8, repeat: Infinity }}
-            className="h-1.5 w-1.5 rounded-full bg-brand-500"
-          />
-        </motion.div>
-        <ChevronDown className="h-3 w-3" />
-      </motion.a>
     </section>
   );
 }

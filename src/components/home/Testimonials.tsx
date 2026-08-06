@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Star, Quote } from "lucide-react";
+import { Star, Quote, Heart } from "lucide-react";
 import { useLanguage } from "../../context/LanguageContext";
 
 // Testimonials data with both English and Bangla versions
@@ -77,7 +77,7 @@ export default function Testimonials() {
 
   // Localized section headings
   const text = {
-    badge: lang === "bn" ? "💜 গ্রাহকদের ভালোবাসা" : "💜 Customer Love",
+    badge: lang === "bn" ? "গ্রাহকদের ভালোবাসা" : "Customer Love",
     headingStart: lang === "bn" ? "প্রিয় " : "Loved by ",
     headingAccent:
       lang === "bn" ? "রংপুরের পরিবারগুলোর" : "Families in Rangpur",
@@ -88,20 +88,31 @@ export default function Testimonials() {
   return (
     <section
       id="reviews"
-      className="relative overflow-hidden bg-brand-50/40 py-24 dark:bg-[#0d0819]"
+      className="relative overflow-hidden bg-brand-50/40 py-20 sm:py-24 dark:bg-[#0d0819]"
       aria-labelledby="reviews-heading"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
+          transition={{ duration: 0.6 }}
           className="mx-auto max-w-2xl text-center"
         >
-          <span className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-xs font-semibold text-brand-700 shadow-sm dark:bg-white/5 dark:text-brand-300">
-            {text.badge}
-          </span>
+          {/* Professional Badge */}
+          <div className="inline-flex items-center gap-2.5 rounded-lg border-l-4 border-brand-500 bg-white/80 py-2 pl-3 pr-4 shadow-sm backdrop-blur-sm dark:bg-white/5">
+            <span className="flex h-6 w-6 items-center justify-center rounded-md bg-brand-500 text-white">
+              <Heart
+                className="h-3.5 w-3.5"
+                fill="currentColor"
+                strokeWidth={2}
+              />
+            </span>
+            <span className="text-xs font-semibold uppercase tracking-wide text-neutral-700 sm:text-[13px] dark:text-neutral-200">
+              {text.badge}
+            </span>
+          </div>
+
           <h2
             id="reviews-heading"
             className="mt-5 text-3xl font-bold text-[#111111] sm:text-4xl lg:text-5xl dark:text-white"
@@ -112,13 +123,17 @@ export default function Testimonials() {
         </motion.div>
       </div>
 
-      <div className="relative mt-16 overflow-hidden">
-        <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r from-brand-50 to-transparent dark:from-[#0d0819]" />
-        <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l from-brand-50 to-transparent dark:from-[#0d0819]" />
+      <div className="relative mt-12 overflow-hidden sm:mt-16">
+        {/* Gradient fade edges */}
+        <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r from-brand-50 to-transparent sm:w-24 dark:from-[#0d0819]" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-brand-50 to-transparent sm:w-24 dark:from-[#0d0819]" />
+
+        {/* Auto-scrolling testimonials */}
         <motion.div
           animate={{ x: ["0%", "-50%"] }}
-          transition={{ duration: 38, repeat: Infinity, ease: "linear" }}
-          className="flex w-max gap-6 px-6"
+          transition={{ duration: 45, repeat: Infinity, ease: "linear" }}
+          style={{ willChange: "transform" }}
+          className="flex w-max gap-5 px-6 sm:gap-6"
         >
           {loop.map((tItem, i) => {
             const name = lang === "bn" ? tItem.nameBn : tItem.nameEn;
@@ -128,7 +143,7 @@ export default function Testimonials() {
             return (
               <div
                 key={`${tItem.nameEn}-${i}`}
-                className="w-[320px] shrink-0 rounded-[20px] glass-panel p-6 shadow-[0_15px_40px_rgba(111,66,229,0.15)]"
+                className="w-[280px] shrink-0 rounded-[20px] glass-panel p-5 shadow-sm sm:w-[320px] sm:p-6"
               >
                 <Quote className="h-6 w-6 text-brand-300" />
                 <p className="mt-3 text-sm leading-relaxed text-neutral-600 dark:text-neutral-300">
@@ -141,7 +156,6 @@ export default function Testimonials() {
                 </div>
                 <div className="mt-4 flex items-center gap-3">
                   <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-brand-400 to-brand-600 text-sm font-bold text-white">
-                    {/* Keep English letter for consistent avatar look */}
                     {tItem.nameEn.charAt(0)}
                   </div>
                   <div>

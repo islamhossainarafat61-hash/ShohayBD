@@ -9,7 +9,6 @@ import {
   Clock,
   MessageCircle,
   Send,
-  Heart,
 } from "lucide-react";
 import { useTheme } from "../../context/ThemeContext";
 import { useLanguage } from "../../context/LanguageContext";
@@ -148,8 +147,7 @@ export default function Footer() {
     privacyPolicy: lang === "bn" ? "প্রাইভেসি পলিসি" : "Privacy Policy",
     termsLink: lang === "bn" ? "শর্তাবলী" : "Terms",
     cookiesLink: lang === "bn" ? "কুকিজ" : "Cookies",
-    madeWith: lang === "bn" ? "তৈরি হয়েছে" : "Made with",
-    inBangladesh: lang === "bn" ? "বাংলাদেশে ভালোবাসা দিয়ে" : "in Bangladesh",
+    madeWith: lang === "bn" ? "তৈরি করেছে" : "Made with",
   };
 
   // Quick links with translations
@@ -409,10 +407,12 @@ export default function Footer() {
               {text.cookiesLink}
             </Link>
           </div>
-          <p className="flex items-center gap-1">
-            {text.madeWith}{" "}
-            <Heart className="h-3.5 w-3.5 fill-brand-400 text-brand-400" />{" "}
-            {text.inBangladesh}
+          <p className="flex items-center gap-1.5">
+            <span>{text.madeWith}</span>
+            <span className="font-semibold tracking-wide text-white/80">
+              SOHAY BD COMPANY
+              <sup className="ml-0.5 text-[9px] text-brand-400">™</sup>
+            </span>
           </p>
         </div>
       </div>

@@ -1,5 +1,11 @@
 import { motion } from "framer-motion";
-import { ListChecks, CalendarClock, UserCheck, Wallet } from "lucide-react";
+import {
+  ListChecks,
+  CalendarClock,
+  UserCheck,
+  Wallet,
+  Settings,
+} from "lucide-react";
 import { useLanguage } from "../../context/LanguageContext";
 
 // Steps data with both English and Bangla versions
@@ -47,7 +53,7 @@ export default function HowItWorks() {
 
   // Localized section headings
   const text = {
-    badge: lang === "bn" ? "⚙️ সহজ প্রক্রিয়া" : "⚙️ Simple Process",
+    badge: lang === "bn" ? "সহজ প্রক্রিয়া" : "Simple Process",
     headingStart: lang === "bn" ? "" : "How ",
     headingAccent: lang === "bn" ? "সহায় বিডি" : "SOHAY BD",
     headingEnd: lang === "bn" ? " যেভাবে কাজ করে" : " Works",
@@ -60,26 +66,33 @@ export default function HowItWorks() {
   return (
     <section
       id="how-it-works"
-      className="relative overflow-hidden bg-gradient-to-b from-white to-brand-50/40 py-24 dark:from-[#08060f] dark:to-[#0d0819]"
+      className="relative overflow-hidden bg-gradient-to-b from-white to-brand-50/40 py-20 sm:py-24 dark:from-[#08060f] dark:to-[#0d0819]"
       aria-labelledby="how-heading"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
+          transition={{ duration: 0.6 }}
           className="mx-auto max-w-2xl text-center"
         >
-          <span className="inline-flex items-center gap-2 rounded-full bg-brand-50 px-4 py-2 text-xs font-semibold text-brand-700 dark:bg-brand-500/10 dark:text-brand-300">
-            {text.badge}
-          </span>
+          {/* Professional Badge */}
+          <div className="inline-flex items-center gap-2.5 rounded-lg border-l-4 border-brand-500 bg-white/80 py-2 pl-3 pr-4 shadow-sm backdrop-blur-sm dark:bg-white/5">
+            <span className="flex h-6 w-6 items-center justify-center rounded-md bg-brand-500 text-white">
+              <Settings className="h-3.5 w-3.5" strokeWidth={2.5} />
+            </span>
+            <span className="text-xs font-semibold uppercase tracking-wide text-neutral-700 sm:text-[13px] dark:text-neutral-200">
+              {text.badge}
+            </span>
+          </div>
+
           <h2
             id="how-heading"
             className="mt-5 text-3xl font-bold text-[#111111] sm:text-4xl lg:text-5xl dark:text-white"
           >
             {text.headingStart}
-            <span className="gradient-text">{text.headingAccent}</span>
+            <span>{text.headingAccent}</span>
             {text.headingEnd}
           </h2>
           <p className="mt-5 text-base leading-relaxed text-neutral-600 sm:text-lg dark:text-neutral-300">
@@ -87,33 +100,27 @@ export default function HowItWorks() {
           </p>
         </motion.div>
 
-        <div className="relative mt-20 grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="relative mt-16 grid grid-cols-1 gap-8 sm:mt-20 sm:grid-cols-2 sm:gap-10 lg:grid-cols-4">
+          {/* Connecting line - only on desktop */}
           <div className="absolute left-0 right-0 top-9 hidden h-px bg-gradient-to-r from-transparent via-brand-300 to-transparent lg:block" />
+
           {stepsData.map((step, i) => {
             const title = lang === "bn" ? step.titleBn : step.titleEn;
             const desc = lang === "bn" ? step.descBn : step.descEn;
             return (
               <motion.div
                 key={step.titleEn}
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.4 }}
-                transition={{ delay: i * 0.15, duration: 0.6 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ delay: i * 0.08, duration: 0.5 }}
                 className="relative flex flex-col items-center text-center"
               >
-                <div className="relative flex h-[72px] w-[72px] items-center justify-center rounded-3xl bg-white shadow-[0_15px_40px_rgba(111,66,229,0.25)] ring-1 ring-brand-100 dark:bg-[#150f28] dark:ring-white/10">
-                  <motion.span
-                    animate={{ scale: [1, 1.08, 1] }}
-                    transition={{
-                      duration: 3,
-                      repeat: Infinity,
-                      delay: i * 0.3,
-                    }}
-                    className="flex h-full w-full items-center justify-center rounded-3xl bg-brand-500/10 text-brand-600 dark:text-brand-300"
-                  >
+                <div className="relative flex h-[72px] w-[72px] items-center justify-center rounded-3xl bg-white shadow-md ring-1 ring-brand-100 dark:bg-[#150f28] dark:ring-white/10">
+                  <span className="flex h-full w-full items-center justify-center rounded-3xl bg-brand-500/10 text-brand-600 dark:text-brand-300">
                     <step.icon className="h-7 w-7" />
-                  </motion.span>
-                  <span className="absolute -top-2.5 -right-2.5 flex h-7 w-7 items-center justify-center rounded-full bg-brand-500 text-xs font-bold text-white shadow-lg">
+                  </span>
+                  <span className="absolute -top-2.5 -right-2.5 flex h-7 w-7 items-center justify-center rounded-full bg-brand-500 text-xs font-bold text-white shadow-md">
                     {lang === "bn" ? ["১", "২", "৩", "৪"][i] : i + 1}
                   </span>
                 </div>

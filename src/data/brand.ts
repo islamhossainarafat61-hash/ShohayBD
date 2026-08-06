@@ -1,7 +1,7 @@
 export const BRAND = {
   name: "SOHAY BD",
   tagline: "আপনার দৈনন্দিন সমাধান",
-  domain: "shohaybd.com",
+  domain: "sohaybd.com",
   phone: "+88 01894-202074",
   phoneRaw: "8801894202074",
   email: "hello@sohaybd.com",

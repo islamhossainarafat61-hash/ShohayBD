@@ -22,15 +22,18 @@ export const teamMembers: TeamMember[] = [
   {
     id: 2,
     name: "Mobassirul Islam",
-    title: "Co-Founder",
+    title: "Co-Founder & Head of Operations",
     photo: "/images/team/member2.png",
+    linkedin:
+      "https://www.linkedin.com/in/m-a-mobassirul-islam-75ba9a427?utm_source=share_via&utm_content=profile&utm_medium=member_android",
+    instagram:
+      "https://www.instagram.com/mobassirulislam723?igsh=NjRkejgxenB6MTZ5",
     facebook: "https://www.facebook.com/share/1EkQnT18jA/",
-    // LinkedIn ও Instagram পরে যোগ করা হবে
   },
   {
     id: 3,
     name: "Mostak Ahmad Sifat",
-    title: "Chief Operating & Systems Officer (COSO)",
+    title: "Chief Operating & Systems Officer",
     photo: "/images/team/member3.png",
     linkedin:
       "https://www.linkedin.com/in/sifat-mostak-361809296?utm_source=share_via&utm_content=profile&utm_medium=member_android",
