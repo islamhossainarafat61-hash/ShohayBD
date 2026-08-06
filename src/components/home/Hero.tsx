@@ -75,7 +75,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative isolate flex items-center overflow-hidden pt-8 pb-12 sm:pt-16 sm:pb-16 lg:min-h-screen lg:pt-28"
+      className="relative isolate flex items-center overflow-hidden pt-24 pb-12 sm:pt-20 sm:pb-16 lg:min-h-screen lg:pt-28"
       aria-label="Hero"
     >
       {/* Background - Static (no lag) */}
