@@ -148,7 +148,7 @@ export default function AboutUs() {
 
   const text = {
     // Hero
-    heroBadge: lang === "bn" ? "🏢 আমাদের সম্পর্কে জানুন" : "🏢 Get to Know Us",
+    heroBadge: lang === "bn" ? "আমাদের সম্পর্কে জানুন" : "Get to Know Us",
     heroHeadingStart: lang === "bn" ? "সহায় বিডি" : "About ",
     heroHeadingAccent: lang === "bn" ? " সম্পর্কে" : "SOHAY BD",
     aboutDesc1:
@@ -167,7 +167,7 @@ export default function AboutUs() {
     stat4Label: lang === "bn" ? "রেটিং" : "Rating",
 
     // Mission Vision Values
-    missionVisionBadge: lang === "bn" ? "🎯 আমাদের পরিচয়" : "🎯 Our Identity",
+    missionVisionBadge: lang === "bn" ? "আমাদের পরিচয়" : "Our Identity",
     missionVisionHeadingStart:
       lang === "bn" ? "মিশন, ভিশন এবং " : "Mission, Vision & ",
     missionVisionHeadingAccent: lang === "bn" ? "মূল্যবোধ" : "Values",
@@ -195,7 +195,7 @@ export default function AboutUs() {
         : "Transparency, reliability, customer-first approach, and continuous innovation — these are the foundations of every decision we make.",
 
     // Why SOHAY BD
-    whyBadge: lang === "bn" ? "⭐ কেন সহায় বিডি" : "⭐ Why SOHAY BD",
+    whyBadge: lang === "bn" ? "কেন সহায় বিডি" : "Why SOHAY BD",
     whyHeadingStart: lang === "bn" ? "কেন আমাদের " : "What Makes Us ",
     whyHeadingAccent: lang === "bn" ? "বেছে নেবেন" : "Different",
     whySub:
@@ -204,7 +204,7 @@ export default function AboutUs() {
         : "The story behind what we do that makes us special",
 
     // Journey
-    journeyBadge: lang === "bn" ? "🚀 আমাদের যাত্রা" : "🚀 Our Journey",
+    journeyBadge: lang === "bn" ? "আমাদের যাত্রা" : "Our Journey",
     journeyHeadingStart: lang === "bn" ? "রংপুর থেকে " : "From Rangpur to ",
     journeyHeadingAccent: lang === "bn" ? "সারা বাংলাদেশ" : "All of Bangladesh",
     journeySub:
@@ -213,7 +213,7 @@ export default function AboutUs() {
         : "Our journey from a small dream to building a national platform",
 
     // Team
-    leadershipBadge: lang === "bn" ? "👥 লিডারশিপ" : "👥 Leadership",
+    leadershipBadge: lang === "bn" ? "লিডারশিপ" : "Leadership",
     leadershipHeading:
       lang === "bn"
         ? "নিবেদিত প্রতিষ্ঠাতাদের হাতে গড়া"
@@ -410,9 +410,7 @@ export default function AboutUs() {
             </div>
             <h1 className="mt-5 text-4xl font-bold text-[#111111] sm:text-5xl lg:text-6xl dark:text-white">
               {text.heroHeadingStart}
-              <span className="bg-gradient-to-r from-brand-500 to-pink-500 bg-clip-text text-transparent">
-                {text.heroHeadingAccent}
-              </span>
+              <span>{text.heroHeadingAccent}</span>
             </h1>
             <div className="mx-auto mt-8 max-w-3xl space-y-5 text-base leading-relaxed text-neutral-700 sm:text-lg dark:text-white/80">
               <p>{text.aboutDesc1}</p>
@@ -503,9 +501,7 @@ export default function AboutUs() {
             </div>
             <h2 className="mt-5 text-3xl font-bold text-[#111111] sm:text-4xl dark:text-white">
               {text.missionVisionHeadingStart}
-              <span className="bg-gradient-to-r from-brand-500 to-pink-500 bg-clip-text text-transparent">
-                {text.missionVisionHeadingAccent}
-              </span>
+              <span>{text.whyHeadingAccent}</span>
             </h2>
             <p className="mt-4 text-base text-neutral-600 dark:text-neutral-300">
               {text.missionVisionSub}
@@ -557,9 +553,7 @@ export default function AboutUs() {
             </div>
             <h2 className="mt-5 text-3xl font-bold text-[#111111] sm:text-4xl dark:text-white">
               {text.whyHeadingStart}
-              <span className="bg-gradient-to-r from-brand-500 to-pink-500 bg-clip-text text-transparent">
-                {text.whyHeadingAccent}
-              </span>
+              <span>{text.missionVisionHeadingAccent}</span>
             </h2>
             <p className="mt-4 text-base text-neutral-600 dark:text-neutral-300">
               {text.whySub}
@@ -611,9 +605,7 @@ export default function AboutUs() {
             </div>
             <h2 className="mt-5 text-3xl font-bold text-[#111111] sm:text-4xl dark:text-white">
               {text.journeyHeadingStart}
-              <span className="bg-gradient-to-r from-brand-500 to-pink-500 bg-clip-text text-transparent">
-                {text.journeyHeadingAccent}
-              </span>
+              <span>{text.journeyHeadingAccent}</span>
             </h2>
             <p className="mt-4 text-base text-neutral-600 dark:text-neutral-300">
               {text.journeySub}

@@ -37,7 +37,6 @@ const TikTokIcon = ({ className = "" }: { className?: string }) => (
   </svg>
 );
 
-// Facebook custom icon
 const FacebookIcon = ({ className = "" }: { className?: string }) => (
   <svg
     viewBox="0 0 24 24"
@@ -49,7 +48,6 @@ const FacebookIcon = ({ className = "" }: { className?: string }) => (
   </svg>
 );
 
-// Instagram custom icon
 const InstagramIcon = ({ className = "" }: { className?: string }) => (
   <svg
     viewBox="0 0 24 24"
@@ -61,7 +59,6 @@ const InstagramIcon = ({ className = "" }: { className?: string }) => (
   </svg>
 );
 
-// YouTube custom icon
 const YoutubeIcon = ({ className = "" }: { className?: string }) => (
   <svg
     viewBox="0 0 24 24"
@@ -86,22 +83,16 @@ export default function Contact() {
   const [sent, setSent] = useState(false);
 
   const text = {
-    // Hero
-    heroBadge:
-      lang === "bn" ? "🎧 আমরা সাহায্যের জন্য আছি" : "🎧 We're Here to Help",
+    heroBadge: lang === "bn" ? "আমরা সাহায্যের জন্য আছি" : "We're Here to Help",
     heroHeadingStart: lang === "bn" ? "যোগাযোগ" : "Get in ",
     heroHeadingAccent: lang === "bn" ? " করুন" : "Touch",
     heroSub:
       lang === "bn"
         ? "সহায় বিডি সম্পর্কে কোনো প্রশ্ন? সার্ভিস নিতে চান? আমাদের টিম ২৪/৭ সাহায্যের জন্য প্রস্তুত।"
         : "Have questions about SOHAY BD? Want to book a service? Our team is ready to assist you 24/7.",
-
-    // Stats
     stat1: lang === "bn" ? "সাপোর্ট" : "Support",
     stat2: lang === "bn" ? "সাড়া সময়" : "Response Time",
     stat3: lang === "bn" ? "খুশি গ্রাহক" : "Happy Customers",
-
-    // Channel section
     channelHeadingStart:
       lang === "bn" ? "আপনার পছন্দের " : "Choose Your Preferred ",
     channelHeadingAccent: lang === "bn" ? "চ্যানেল" : "Channel",
@@ -109,46 +100,33 @@ export default function Contact() {
       lang === "bn"
         ? "নিচের যেকোনো চ্যানেলে যোগাযোগ করুন — আমরা যত দ্রুত সম্ভব সাড়া দিব"
         : "Reach out through any of the channels below — we'll respond as quickly as possible",
-
-    // Channel cards
     callUsDirectly: lang === "bn" ? "সরাসরি কল করুন" : "CALL US DIRECTLY",
     phoneSupport: lang === "bn" ? "ফোন সাপোর্ট" : "Phone Support",
     workingSchedule:
       lang === "bn" ? "প্রতিদিন: সকাল ৮টা - রাত ১০টা" : "Everyday: 8AM - 10PM",
     callNow: lang === "bn" ? "কল করুন" : "Call Now",
-
     quickResponse: lang === "bn" ? "দ্রুত সাড়া" : "QUICK RESPONSE",
     whatsappTitle: "WhatsApp",
     available247: lang === "bn" ? "২৪/৭ উপলব্ধ" : "24/7 Available",
     chatNow: lang === "bn" ? "চ্যাট করুন" : "Chat Now",
-
     emailUs: lang === "bn" ? "ইমেইল করুন" : "EMAIL US",
     emailSupport: lang === "bn" ? "ইমেইল সাপোর্ট" : "Email Support",
     replyWithin: lang === "bn" ? "১ ঘণ্টার মধ্যে উত্তর" : "Reply within 1 hour",
     sendEmail: lang === "bn" ? "ইমেইল পাঠান" : "Send Email",
-
     aiChat: lang === "bn" ? "এআই চ্যাট" : "AI CHAT",
     aiSupportTitle: lang === "bn" ? "এআই সাপোর্ট" : "AI Support",
     chatWithAi: lang === "bn" ? "আমাদের এআই এর সাথে চ্যাট" : "Chat with our AI",
     instantReply: lang === "bn" ? "তাৎক্ষণিক উত্তর" : "Instant Reply",
     startChat: lang === "bn" ? "চ্যাট শুরু করুন" : "Start Chat",
-
-    // Office
     ourOffice: lang === "bn" ? "আমাদের অফিস" : "OUR OFFICE",
     officeName: "SOHAY BD",
     address: lang === "bn" ? "ঠিকানা" : "ADDRESS",
     workingHours: lang === "bn" ? "কাজের সময়" : "WORKING HOURS",
-
-    // Quick contact
     quickContact: lang === "bn" ? "দ্রুত যোগাযোগ" : "QUICK CONTACT",
     needImmediate:
       lang === "bn" ? "জরুরি সাহায্য দরকার?" : "Need Immediate Help?",
-
-    // Social
     stayConnected: lang === "bn" ? "সংযুক্ত থাকুন" : "STAY CONNECTED",
     followUs: lang === "bn" ? "আমাদের ফলো করুন" : "Follow Us",
-
-    // Map
     findUsHere: lang === "bn" ? "আমাদের খুঁজুন " : "Find Us ",
     findUsHereAccent: lang === "bn" ? "এখানে" : "Here",
     findUsSub:
@@ -157,9 +135,7 @@ export default function Contact() {
         : "Visit our office in Rangpur. We'd love to meet you in person.",
     getDirections: lang === "bn" ? "দিকনির্দেশ পান" : "Get Directions",
     openInMaps: lang === "bn" ? "ম্যাপে খুলুন" : "Open in Maps",
-
-    // Form
-    sendMessageBadge: lang === "bn" ? "✈️ মেসেজ পাঠান" : "✈️ Send a Message",
+    sendMessageBadge: lang === "bn" ? "মেসেজ পাঠান" : "Send a Message",
     formHeadingStart: lang === "bn" ? "চলুন কথা " : "Let's Start a ",
     formHeadingAccent: lang === "bn" ? "শুরু করি" : "Conversation",
     formSub:
@@ -201,13 +177,10 @@ export default function Contact() {
       lang === "bn"
         ? "প্রাইভেসি পলিসিতে সম্মত হতে হবে"
         : "Please agree to Privacy Policy",
-
-    // WhatsApp message parts
     whatsappGreeting:
       lang === "bn" ? "হ্যালো সহায় বিডি! 👋" : "Hello SOHAY BD! 👋",
   };
 
-  // Google Maps embed URL for Rangpur (using the address)
   const mapAddress = encodeURIComponent(
     "3rd floor, Mujdalifa Plaza, Shapla Road, Rangpur 5400, Bangladesh",
   );
@@ -216,12 +189,10 @@ export default function Contact() {
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-
     if (!form.agreed) {
       alert(text.agreeRequired);
       return;
     }
-
     const messageText = `${text.whatsappGreeting}\n\n👤 ${form.name}\n📞 ${form.phone}\n📧 ${form.email}\n🏷️ ${form.subject}\n\n💬 ${form.message}`;
     window.open(
       buildWhatsappLink(messageText),
@@ -232,96 +203,79 @@ export default function Contact() {
     setTimeout(() => setSent(false), 4000);
   };
 
+  // Consistent icon style used everywhere
+  const iconBox =
+    "flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-brand-500 to-brand-600 text-white shadow-md";
+  const iconBoxLg =
+    "flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-500 to-brand-600 text-white shadow-lg";
+  const channelIcon =
+    "flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-brand-500 to-brand-600 text-white shadow-md";
+  const smallIcon =
+    "flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-brand-500/10 text-brand-600 dark:text-brand-300";
+
   return (
     <main className="relative overflow-hidden bg-white pb-24 pt-8 sm:pt-12 dark:bg-[#08060f]">
-      {/* Background decorations */}
       <div className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute -top-20 left-1/3 hidden h-96 w-96 rounded-full bg-brand-200/30 blur-[130px] sm:block dark:bg-brand-700/20" />
-        <div className="absolute top-1/2 right-0 hidden h-96 w-96 rounded-full bg-pink-200/20 blur-[130px] sm:block dark:bg-pink-700/10" />
       </div>
 
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        {/* ═══════════════════════════════════════ */}
-        {/* HERO SECTION */}
-        {/* ═══════════════════════════════════════ */}
+        {/* HERO */}
         <motion.section
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           className="text-center"
         >
-          <div className="inline-flex items-center gap-2 rounded-full border border-brand-200 bg-brand-50 px-4 py-2 text-xs font-semibold text-brand-700 shadow-sm dark:border-brand-500/30 dark:bg-brand-500/10 dark:text-brand-300">
-            <Headphones className="h-3.5 w-3.5" />
-            {text.heroBadge}
+          <div className="inline-flex items-center gap-2.5 rounded-lg border-l-4 border-brand-500 bg-white/80 py-2 pl-3 pr-4 shadow-sm backdrop-blur-sm dark:bg-white/5">
+            <span className="flex h-6 w-6 items-center justify-center rounded-md bg-brand-500 text-white">
+              <Headphones className="h-3.5 w-3.5" strokeWidth={2.5} />
+            </span>
+            <span className="text-xs font-semibold uppercase tracking-wide text-neutral-700 sm:text-[13px] dark:text-neutral-200">
+              {text.heroBadge}
+            </span>
           </div>
           <h1 className="mt-5 text-4xl font-bold text-[#111111] sm:text-5xl lg:text-6xl dark:text-white">
             {text.heroHeadingStart}
-            <span className="bg-gradient-to-r from-brand-500 to-pink-500 bg-clip-text text-transparent">
-              {text.heroHeadingAccent}
-            </span>
+            <span>{text.heroHeadingAccent}</span>
           </h1>
           <p className="mx-auto mt-5 max-w-2xl text-base text-neutral-600 sm:text-lg dark:text-neutral-300">
             {text.heroSub}
           </p>
 
-          {/* Stats Bar */}
+          {/* Stats */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
             className="mx-auto mt-8 flex max-w-3xl flex-wrap items-center justify-center gap-4 rounded-2xl border border-neutral-100 bg-white/60 p-4 shadow-sm backdrop-blur-md dark:border-white/10 dark:bg-white/5 sm:gap-8 sm:p-6"
           >
-            <div className="flex items-center gap-3">
-              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-brand-500 text-white shadow-md">
-                <Clock className="h-5 w-5" />
-              </span>
-              <div className="text-left">
-                <div className="text-lg font-bold text-[#111111] dark:text-white">
-                  24/7
-                </div>
-                <div className="text-xs text-neutral-500 dark:text-neutral-400">
-                  {text.stat1}
-                </div>
-              </div>
-            </div>
-
-            <div className="h-10 w-px bg-neutral-200 dark:bg-white/10" />
-
-            <div className="flex items-center gap-3">
-              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-brand-500 text-white shadow-md">
-                <Zap className="h-5 w-5" />
-              </span>
-              <div className="text-left">
-                <div className="text-lg font-bold text-[#111111] dark:text-white">
-                  &lt; 1hr
-                </div>
-                <div className="text-xs text-neutral-500 dark:text-neutral-400">
-                  {text.stat2}
+            {[
+              { icon: Clock, value: "24/7", label: text.stat1 },
+              { icon: Zap, value: "< 1hr", label: text.stat2 },
+              { icon: Users, value: "1000+", label: text.stat3 },
+            ].map((stat, i) => (
+              <div key={i} className="flex items-center gap-3">
+                {i > 0 && (
+                  <div className="h-10 w-px bg-neutral-200 dark:bg-white/10" />
+                )}
+                <span className={iconBox}>
+                  <stat.icon className="h-5 w-5" />
+                </span>
+                <div className="text-left">
+                  <div className="text-lg font-bold text-[#111111] dark:text-white">
+                    {stat.value}
+                  </div>
+                  <div className="text-xs text-neutral-500 dark:text-neutral-400">
+                    {stat.label}
+                  </div>
                 </div>
               </div>
-            </div>
-
-            <div className="h-10 w-px bg-neutral-200 dark:bg-white/10" />
-
-            <div className="flex items-center gap-3">
-              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-brand-500 text-white shadow-md">
-                <Users className="h-5 w-5" />
-              </span>
-              <div className="text-left">
-                <div className="text-lg font-bold text-[#111111] dark:text-white">
-                  1000+
-                </div>
-                <div className="text-xs text-neutral-500 dark:text-neutral-400">
-                  {text.stat3}
-                </div>
-              </div>
-            </div>
+            ))}
           </motion.div>
         </motion.section>
 
-        {/* ═══════════════════════════════════════ */}
-        {/* CHOOSE YOUR CHANNEL SECTION */}
-        {/* ═══════════════════════════════════════ */}
+        {/* CHANNELS */}
         <motion.section
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -332,30 +286,27 @@ export default function Contact() {
           <div className="text-center">
             <h2 className="text-3xl font-bold text-[#111111] sm:text-4xl dark:text-white">
               {text.channelHeadingStart}
-              <span className="bg-gradient-to-r from-brand-500 to-pink-500 bg-clip-text text-transparent">
-                {text.channelHeadingAccent}
-              </span>
+              <span>{text.channelHeadingAccent}</span>
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-sm text-neutral-600 sm:text-base dark:text-neutral-300">
               {text.channelSub}
             </p>
           </div>
 
-          {/* Channel Cards - 4 cards grid */}
           <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {/* Phone Card */}
+            {/* Phone */}
             <motion.a
               href={`tel:${BRAND.phoneRaw}`}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0, duration: 0.4 }}
-              className="group relative overflow-hidden rounded-2xl border border-neutral-100 bg-white p-6 shadow-sm transition-all hover:-translate-y-1 hover:border-blue-300 hover:shadow-lg dark:border-white/10 dark:bg-white/[0.03] dark:hover:border-blue-500/40"
+              className="group rounded-2xl border border-neutral-100 bg-white p-6 shadow-sm transition-all hover:-translate-y-1 hover:border-brand-200 hover:shadow-lg dark:border-white/10 dark:bg-white/[0.03] dark:hover:border-brand-500/40"
             >
-              <span className="flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 text-white shadow-md">
+              <span className={channelIcon}>
                 <Phone className="h-6 w-6" />
               </span>
-              <p className="mt-5 text-[10px] font-bold uppercase tracking-widest text-blue-600 dark:text-blue-400">
+              <p className="mt-5 text-[10px] font-bold uppercase tracking-widest text-brand-600 dark:text-brand-400">
                 {text.callUsDirectly}
               </p>
               <h3 className="mt-1 text-lg font-bold text-[#111111] dark:text-white">
@@ -367,13 +318,13 @@ export default function Contact() {
               <p className="mt-1 text-xs text-neutral-500 dark:text-neutral-400">
                 {text.workingSchedule}
               </p>
-              <div className="mt-4 flex items-center gap-1 text-xs font-semibold text-blue-600 dark:text-blue-400">
+              <div className="mt-4 flex items-center gap-1 text-xs font-semibold text-brand-600 dark:text-brand-400">
                 {text.callNow}
                 <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
               </div>
             </motion.a>
 
-            {/* WhatsApp Card */}
+            {/* WhatsApp */}
             <motion.a
               href={buildWhatsappLink(text.whatsappGreeting)}
               target="_blank"
@@ -382,12 +333,12 @@ export default function Contact() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.05, duration: 0.4 }}
-              className="group relative overflow-hidden rounded-2xl border border-neutral-100 bg-white p-6 shadow-sm transition-all hover:-translate-y-1 hover:border-green-300 hover:shadow-lg dark:border-white/10 dark:bg-white/[0.03] dark:hover:border-green-500/40"
+              className="group rounded-2xl border border-neutral-100 bg-white p-6 shadow-sm transition-all hover:-translate-y-1 hover:border-brand-200 hover:shadow-lg dark:border-white/10 dark:bg-white/[0.03] dark:hover:border-brand-500/40"
             >
-              <span className="flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-green-500 to-emerald-600 text-white shadow-md">
+              <span className={channelIcon}>
                 <MessageCircle className="h-6 w-6" />
               </span>
-              <p className="mt-5 text-[10px] font-bold uppercase tracking-widest text-green-600 dark:text-green-400">
+              <p className="mt-5 text-[10px] font-bold uppercase tracking-widest text-brand-600 dark:text-brand-400">
                 {text.quickResponse}
               </p>
               <h3 className="mt-1 text-lg font-bold text-[#111111] dark:text-white">
@@ -399,25 +350,25 @@ export default function Contact() {
               <p className="mt-1 text-xs text-neutral-500 dark:text-neutral-400">
                 {text.available247}
               </p>
-              <div className="mt-4 flex items-center gap-1 text-xs font-semibold text-green-600 dark:text-green-400">
+              <div className="mt-4 flex items-center gap-1 text-xs font-semibold text-brand-600 dark:text-brand-400">
                 {text.chatNow}
                 <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
               </div>
             </motion.a>
 
-            {/* Email Card */}
+            {/* Email */}
             <motion.a
               href={`mailto:${BRAND.email}`}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1, duration: 0.4 }}
-              className="group relative overflow-hidden rounded-2xl border border-neutral-100 bg-white p-6 shadow-sm transition-all hover:-translate-y-1 hover:border-pink-300 hover:shadow-lg dark:border-white/10 dark:bg-white/[0.03] dark:hover:border-pink-500/40"
+              className="group rounded-2xl border border-neutral-100 bg-white p-6 shadow-sm transition-all hover:-translate-y-1 hover:border-brand-200 hover:shadow-lg dark:border-white/10 dark:bg-white/[0.03] dark:hover:border-brand-500/40"
             >
-              <span className="flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-pink-500 to-rose-600 text-white shadow-md">
+              <span className={channelIcon}>
                 <Mail className="h-6 w-6" />
               </span>
-              <p className="mt-5 text-[10px] font-bold uppercase tracking-widest text-pink-600 dark:text-pink-400">
+              <p className="mt-5 text-[10px] font-bold uppercase tracking-widest text-brand-600 dark:text-brand-400">
                 {text.emailUs}
               </p>
               <h3 className="mt-1 text-lg font-bold text-[#111111] dark:text-white">
@@ -429,13 +380,13 @@ export default function Contact() {
               <p className="mt-1 text-xs text-neutral-500 dark:text-neutral-400">
                 {text.replyWithin}
               </p>
-              <div className="mt-4 flex items-center gap-1 text-xs font-semibold text-pink-600 dark:text-pink-400">
+              <div className="mt-4 flex items-center gap-1 text-xs font-semibold text-brand-600 dark:text-brand-400">
                 {text.sendEmail}
                 <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
               </div>
             </motion.a>
 
-            {/* AI Chat Card */}
+            {/* AI Chat */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -444,12 +395,12 @@ export default function Contact() {
             >
               <Link
                 to="/ai-support"
-                className="group relative flex flex-col overflow-hidden rounded-2xl border border-neutral-100 bg-white p-6 shadow-sm transition-all hover:-translate-y-1 hover:border-cyan-300 hover:shadow-lg dark:border-white/10 dark:bg-white/[0.03] dark:hover:border-cyan-500/40"
+                className="group flex flex-col rounded-2xl border border-neutral-100 bg-white p-6 shadow-sm transition-all hover:-translate-y-1 hover:border-brand-200 hover:shadow-lg dark:border-white/10 dark:bg-white/[0.03] dark:hover:border-brand-500/40"
               >
-                <span className="flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-cyan-500 to-blue-600 text-white shadow-md">
+                <span className={channelIcon}>
                   <Bot className="h-6 w-6" />
                 </span>
-                <p className="mt-5 text-[10px] font-bold uppercase tracking-widest text-cyan-600 dark:text-cyan-400">
+                <p className="mt-5 text-[10px] font-bold uppercase tracking-widest text-brand-600 dark:text-brand-400">
                   {text.aiChat}
                 </p>
                 <h3 className="mt-1 text-lg font-bold text-[#111111] dark:text-white">
@@ -461,7 +412,7 @@ export default function Contact() {
                 <p className="mt-1 text-xs text-neutral-500 dark:text-neutral-400">
                   {text.instantReply}
                 </p>
-                <div className="mt-4 flex items-center gap-1 text-xs font-semibold text-cyan-600 dark:text-cyan-400">
+                <div className="mt-4 flex items-center gap-1 text-xs font-semibold text-brand-600 dark:text-brand-400">
                   {text.startChat}
                   <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
                 </div>
@@ -470,11 +421,9 @@ export default function Contact() {
           </div>
         </motion.section>
 
-        {/* ═══════════════════════════════════════ */}
-        {/* OFFICE INFO + QUICK CONTACT + SOCIAL */}
-        {/* ═══════════════════════════════════════ */}
+        {/* OFFICE + QUICK CONTACT + SOCIAL */}
         <div className="mt-16 grid grid-cols-1 gap-6 lg:grid-cols-3">
-          {/* Office Info Card */}
+          {/* Office */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -483,7 +432,7 @@ export default function Contact() {
             className="rounded-2xl border border-neutral-100 bg-white p-6 shadow-sm dark:border-white/10 dark:bg-white/[0.03]"
           >
             <div className="flex items-start gap-4">
-              <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-brand-500 to-brand-600 text-white shadow-md">
+              <span className={iconBox}>
                 <Building2 className="h-6 w-6" />
               </span>
               <div>
@@ -495,10 +444,9 @@ export default function Contact() {
                 </h3>
               </div>
             </div>
-
             <div className="mt-6 space-y-4">
               <div className="flex items-start gap-3">
-                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-brand-500/10 text-brand-600 dark:text-brand-300">
+                <span className={smallIcon}>
                   <MapPin className="h-4 w-4" />
                 </span>
                 <div>
@@ -515,9 +463,8 @@ export default function Contact() {
                   </a>
                 </div>
               </div>
-
               <div className="flex items-start gap-3">
-                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-brand-500/10 text-brand-600 dark:text-brand-300">
+                <span className={smallIcon}>
                   <Clock className="h-4 w-4" />
                 </span>
                 <div>
@@ -532,7 +479,7 @@ export default function Contact() {
             </div>
           </motion.div>
 
-          {/* Quick Contact Card */}
+          {/* Quick Contact */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -541,11 +488,11 @@ export default function Contact() {
             className="rounded-2xl border border-neutral-100 bg-white p-6 shadow-sm dark:border-white/10 dark:bg-white/[0.03]"
           >
             <div className="flex items-start gap-4">
-              <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-purple-500 to-pink-500 text-white shadow-md">
+              <span className={iconBox}>
                 <Zap className="h-6 w-6" />
               </span>
               <div>
-                <p className="text-[10px] font-bold uppercase tracking-widest text-purple-600 dark:text-purple-400">
+                <p className="text-[10px] font-bold uppercase tracking-widest text-brand-600 dark:text-brand-400">
                   {text.quickContact}
                 </p>
                 <h3 className="mt-1 text-lg font-bold text-[#111111] dark:text-white">
@@ -553,11 +500,10 @@ export default function Contact() {
                 </h3>
               </div>
             </div>
-
             <div className="mt-6 grid grid-cols-2 gap-3">
               <a
                 href={`tel:${BRAND.phoneRaw}`}
-                className="flex items-center justify-center gap-2 rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 px-4 py-3 text-sm font-semibold text-white shadow-md transition-all hover:-translate-y-0.5 hover:shadow-lg"
+                className="flex items-center justify-center gap-2 rounded-xl bg-brand-500 px-4 py-3 text-sm font-semibold text-white shadow-md transition-all hover:-translate-y-0.5 hover:bg-brand-600 hover:shadow-lg"
               >
                 <Phone className="h-4 w-4" />
                 {text.callNow}
@@ -566,7 +512,7 @@ export default function Contact() {
                 href={buildWhatsappLink(text.whatsappGreeting)}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 rounded-xl bg-gradient-to-br from-green-500 to-emerald-600 px-4 py-3 text-sm font-semibold text-white shadow-md transition-all hover:-translate-y-0.5 hover:shadow-lg"
+                className="flex items-center justify-center gap-2 rounded-xl bg-[#25D366] px-4 py-3 text-sm font-semibold text-white shadow-md transition-all hover:-translate-y-0.5 hover:shadow-lg"
               >
                 <MessageCircle className="h-4 w-4" />
                 WhatsApp
@@ -574,7 +520,7 @@ export default function Contact() {
             </div>
           </motion.div>
 
-          {/* Social Links Card */}
+          {/* Social */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -583,11 +529,11 @@ export default function Contact() {
             className="rounded-2xl border border-neutral-100 bg-white p-6 shadow-sm dark:border-white/10 dark:bg-white/[0.03]"
           >
             <div className="flex items-start gap-4">
-              <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-pink-500 to-rose-500 text-white shadow-md">
+              <span className={iconBox}>
                 <Share2 className="h-6 w-6" />
               </span>
               <div>
-                <p className="text-[10px] font-bold uppercase tracking-widest text-pink-600 dark:text-pink-400">
+                <p className="text-[10px] font-bold uppercase tracking-widest text-brand-600 dark:text-brand-400">
                   {text.stayConnected}
                 </p>
                 <h3 className="mt-1 text-lg font-bold text-[#111111] dark:text-white">
@@ -595,51 +541,41 @@ export default function Contact() {
                 </h3>
               </div>
             </div>
-
             <div className="mt-6 space-y-2">
-              <a
-                href={BRAND.social.facebook}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-3 rounded-xl border border-blue-200 bg-blue-50 px-4 py-3 text-sm font-semibold text-blue-700 transition-all hover:-translate-y-0.5 hover:bg-blue-100 dark:border-blue-500/20 dark:bg-blue-500/10 dark:text-blue-400 dark:hover:bg-blue-500/20"
-              >
-                <FacebookIcon className="h-4 w-4" />
-                Facebook
-              </a>
-              <a
-                href={BRAND.social.youtube}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-3 rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm font-semibold text-red-700 transition-all hover:-translate-y-0.5 hover:bg-red-100 dark:border-red-500/20 dark:bg-red-500/10 dark:text-red-400 dark:hover:bg-red-500/20"
-              >
-                <YoutubeIcon className="h-4 w-4" />
-                YouTube
-              </a>
-              <a
-                href={BRAND.social.instagram}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-3 rounded-xl border border-pink-200 bg-pink-50 px-4 py-3 text-sm font-semibold text-pink-700 transition-all hover:-translate-y-0.5 hover:bg-pink-100 dark:border-pink-500/20 dark:bg-pink-500/10 dark:text-pink-400 dark:hover:bg-pink-500/20"
-              >
-                <InstagramIcon className="h-4 w-4" />
-                Instagram
-              </a>
-              <a
-                href={BRAND.social.tiktok}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-3 rounded-xl border border-neutral-200 bg-neutral-50 px-4 py-3 text-sm font-semibold text-neutral-800 transition-all hover:-translate-y-0.5 hover:bg-neutral-100 dark:border-white/10 dark:bg-white/5 dark:text-white dark:hover:bg-white/10"
-              >
-                <TikTokIcon className="h-4 w-4" />
-                TikTok
-              </a>
+              {[
+                {
+                  href: BRAND.social.facebook,
+                  Icon: FacebookIcon,
+                  name: "Facebook",
+                },
+                {
+                  href: BRAND.social.youtube,
+                  Icon: YoutubeIcon,
+                  name: "YouTube",
+                },
+                {
+                  href: BRAND.social.instagram,
+                  Icon: InstagramIcon,
+                  name: "Instagram",
+                },
+                { href: BRAND.social.tiktok, Icon: TikTokIcon, name: "TikTok" },
+              ].map((social) => (
+                <a
+                  key={social.name}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-3 rounded-xl border border-neutral-200 bg-neutral-50 px-4 py-3 text-sm font-semibold text-neutral-800 transition-all hover:-translate-y-0.5 hover:border-brand-300 hover:bg-brand-50 hover:text-brand-700 dark:border-white/10 dark:bg-white/5 dark:text-white dark:hover:border-brand-500/30 dark:hover:bg-brand-500/10 dark:hover:text-brand-300"
+                >
+                  <social.Icon className="h-4 w-4" />
+                  {social.name}
+                </a>
+              ))}
             </div>
           </motion.div>
         </div>
 
-        {/* ═══════════════════════════════════════ */}
-        {/* FIND US HERE - MAP SECTION */}
-        {/* ═══════════════════════════════════════ */}
+        {/* MAP */}
         <motion.section
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -650,9 +586,7 @@ export default function Contact() {
           <div className="text-center">
             <h2 className="text-3xl font-bold text-[#111111] sm:text-4xl dark:text-white">
               {text.findUsHere}
-              <span className="bg-gradient-to-r from-brand-500 to-pink-500 bg-clip-text text-transparent">
-                {text.findUsHereAccent}
-              </span>
+              <span>{text.findUsHereAccent}</span>
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-sm text-neutral-600 sm:text-base dark:text-neutral-300">
               {text.findUsSub}
@@ -660,10 +594,9 @@ export default function Contact() {
           </div>
 
           <div className="mt-10 overflow-hidden rounded-3xl border border-neutral-100 bg-white shadow-lg dark:border-white/10 dark:bg-white/[0.03]">
-            {/* Location Info */}
             <div className="border-b border-neutral-100 bg-gradient-to-br from-brand-50/50 to-white p-6 dark:border-white/10 dark:from-brand-500/10 dark:to-transparent sm:p-8">
               <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:gap-6">
-                <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-red-500 to-pink-500 text-white shadow-lg">
+                <span className={iconBoxLg}>
                   <MapPin className="h-7 w-7" />
                 </span>
                 <div className="flex-1">
@@ -673,7 +606,6 @@ export default function Contact() {
                   <p className="mt-2 text-sm leading-relaxed text-neutral-600 dark:text-neutral-300">
                     {BRAND.area}
                   </p>
-
                   <div className="mt-5 flex flex-wrap gap-3">
                     <a
                       href={googleMapsUrl}
@@ -697,8 +629,6 @@ export default function Contact() {
                 </div>
               </div>
             </div>
-
-            {/* Embedded Google Map */}
             <div className="relative h-[400px] w-full sm:h-[500px]">
               <iframe
                 src={embedMapUrl}
@@ -715,9 +645,7 @@ export default function Contact() {
           </div>
         </motion.section>
 
-        {/* ═══════════════════════════════════════ */}
-        {/* CONTACT FORM SECTION */}
-        {/* ═══════════════════════════════════════ */}
+        {/* FORM */}
         <motion.section
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -726,27 +654,26 @@ export default function Contact() {
           className="mt-16"
         >
           <div className="rounded-3xl border border-neutral-100 bg-white p-6 shadow-lg dark:border-white/10 dark:bg-white/[0.03] sm:p-10">
-            {/* Form Header */}
             <div>
-              <div className="inline-flex items-center gap-2 rounded-full border border-brand-200 bg-brand-50 px-4 py-2 text-xs font-semibold text-brand-700 dark:border-brand-500/30 dark:bg-brand-500/10 dark:text-brand-300">
-                <Send className="h-3.5 w-3.5" />
-                {text.sendMessageBadge}
+              <div className="inline-flex items-center gap-2.5 rounded-lg border-l-4 border-brand-500 bg-white/80 py-2 pl-3 pr-4 shadow-sm backdrop-blur-sm dark:bg-white/5">
+                <span className="flex h-6 w-6 items-center justify-center rounded-md bg-brand-500 text-white">
+                  <Send className="h-3.5 w-3.5" strokeWidth={2.5} />
+                </span>
+                <span className="text-xs font-semibold uppercase tracking-wide text-neutral-700 sm:text-[13px] dark:text-neutral-200">
+                  {text.sendMessageBadge}
+                </span>
               </div>
               <h2 className="mt-4 text-3xl font-bold text-[#111111] sm:text-4xl dark:text-white">
                 {text.formHeadingStart}
-                <span className="bg-gradient-to-r from-brand-500 to-pink-500 bg-clip-text text-transparent">
-                  {text.formHeadingAccent}
-                </span>
+                <span>{text.formHeadingAccent}</span>
               </h2>
               <p className="mt-3 text-sm text-neutral-600 sm:text-base dark:text-neutral-300">
                 {text.formSub}
               </p>
             </div>
 
-            {/* Form */}
             <form onSubmit={handleSubmit} className="mt-8 space-y-5">
               <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
-                {/* Full Name */}
                 <div>
                   <label className="flex items-center gap-2 text-sm font-semibold text-[#111111] dark:text-white">
                     <User className="h-4 w-4 text-brand-500" />
@@ -761,8 +688,6 @@ export default function Contact() {
                     className="mt-2 w-full rounded-xl border border-neutral-200 bg-white px-4 py-3 text-sm text-[#111111] placeholder:text-neutral-400 focus:border-brand-400 focus:outline-none focus:ring-2 focus:ring-brand-100 dark:border-white/10 dark:bg-white/5 dark:text-white dark:placeholder:text-neutral-500 dark:focus:ring-brand-500/20"
                   />
                 </div>
-
-                {/* Phone */}
                 <div>
                   <label className="flex items-center gap-2 text-sm font-semibold text-[#111111] dark:text-white">
                     <Phone className="h-4 w-4 text-brand-500" />
@@ -779,8 +704,6 @@ export default function Contact() {
                     className="mt-2 w-full rounded-xl border border-neutral-200 bg-white px-4 py-3 text-sm text-[#111111] placeholder:text-neutral-400 focus:border-brand-400 focus:outline-none focus:ring-2 focus:ring-brand-100 dark:border-white/10 dark:bg-white/5 dark:text-white dark:placeholder:text-neutral-500 dark:focus:ring-brand-500/20"
                   />
                 </div>
-
-                {/* Email */}
                 <div>
                   <label className="flex items-center gap-2 text-sm font-semibold text-[#111111] dark:text-white">
                     <Mail className="h-4 w-4 text-brand-500" />
@@ -796,8 +719,6 @@ export default function Contact() {
                     className="mt-2 w-full rounded-xl border border-neutral-200 bg-white px-4 py-3 text-sm text-[#111111] placeholder:text-neutral-400 focus:border-brand-400 focus:outline-none focus:ring-2 focus:ring-brand-100 dark:border-white/10 dark:bg-white/5 dark:text-white dark:placeholder:text-neutral-500 dark:focus:ring-brand-500/20"
                   />
                 </div>
-
-                {/* Subject Dropdown */}
                 <div>
                   <label className="flex items-center gap-2 text-sm font-semibold text-[#111111] dark:text-white">
                     <Tag className="h-4 w-4 text-brand-500" />
@@ -821,7 +742,6 @@ export default function Contact() {
                 </div>
               </div>
 
-              {/* Message */}
               <div>
                 <label className="flex items-center gap-2 text-sm font-semibold text-[#111111] dark:text-white">
                   <MessageSquare className="h-4 w-4 text-brand-500" />
@@ -839,8 +759,7 @@ export default function Contact() {
                 />
               </div>
 
-              {/* Privacy Agreement */}
-              <label className="flex items-start gap-3 cursor-pointer">
+              <label className="flex cursor-pointer items-start gap-3">
                 <input
                   type="checkbox"
                   checked={form.agreed}
@@ -867,10 +786,9 @@ export default function Contact() {
                 </span>
               </label>
 
-              {/* Submit Button */}
               <button
                 type="submit"
-                className="flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-brand-500 to-pink-500 px-6 py-4 text-sm font-semibold text-white shadow-lg transition-all hover:-translate-y-0.5 hover:shadow-xl sm:text-base"
+                className="flex w-full items-center justify-center gap-2 rounded-full bg-brand-500 px-6 py-4 text-sm font-semibold text-white shadow-lg transition-all hover:-translate-y-0.5 hover:bg-brand-600 hover:shadow-xl sm:text-base"
               >
                 {text.sendMessage}
                 <Send className="h-4 w-4" />

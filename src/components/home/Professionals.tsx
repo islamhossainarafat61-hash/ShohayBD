@@ -8,7 +8,7 @@ export default function Professionals() {
   const { lang } = useLanguage();
 
   const text = {
-    badge: lang === "bn" ? "আমাদের টিম" : "Our People",
+    badge: lang === "bn" ? "আমাদের বিশেষজ্ঞ দল" : "Our Expert Team",
     headingStart: lang === "bn" ? "আপনার বিশ্বাসে, " : "Trusted by You, ",
     headingAccent: lang === "bn" ? "আমাদের যাচাইয়ে" : "Verified by Us",
     sub:

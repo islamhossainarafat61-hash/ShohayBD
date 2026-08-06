@@ -100,7 +100,7 @@ export default function Technicians() {
 
   const text = {
     // Hero
-    heroBadge: lang === "bn" ? "🛠️ আমাদের টেকনিশিয়ান" : "🛠️ Our Technicians",
+    heroBadge: lang === "bn" ? "আমাদের টেকনিশিয়ান" : "Our Technicians",
     heroHeadingStart: lang === "bn" ? "যাচাইকৃত ও " : "Verified & ",
     heroHeadingAccent: lang === "bn" ? "দক্ষ পেশাদার" : "Skilled Professionals",
     desc:
@@ -115,7 +115,7 @@ export default function Technicians() {
     stat4Label: lang === "bn" ? "গড় রেটিং" : "Avg Rating",
 
     // Expertise
-    expertiseBadge: lang === "bn" ? "🎯 আমাদের দক্ষতা" : "🎯 Our Expertise",
+    expertiseBadge: lang === "bn" ? "আমাদের দক্ষতা" : "Our Expertise",
     expertiseHeadingStart:
       lang === "bn" ? "বিভিন্ন ক্ষেত্রে " : "Skilled Across ",
     expertiseHeadingAccent: lang === "bn" ? "দক্ষ" : "Multiple Fields",
@@ -125,7 +125,7 @@ export default function Technicians() {
         : "Our technicians specialize in various service categories",
 
     // Standards
-    standardsBadge: lang === "bn" ? "✨ আমাদের মান" : "✨ Our Standards",
+    standardsBadge: lang === "bn" ? "আমাদের মান" : "Our Standards",
     standardsHeadingStart:
       lang === "bn" ? "কেন আমাদের টেকনিশিয়ান " : "What Makes Our Technicians ",
     standardsHeadingAccent: lang === "bn" ? "সেরা" : "Special",
@@ -135,8 +135,7 @@ export default function Technicians() {
         : "Every professional who joins our platform meets these standards",
 
     // Process (Selection)
-    processBadge:
-      lang === "bn" ? "🔍 বাছাই প্রক্রিয়া" : "🔍 Selection Process",
+    processBadge: lang === "bn" ? "বাছাই প্রক্রিয়া" : "Selection Process",
     processHeadingStart: lang === "bn" ? "কীভাবে আমরা " : "How We ",
     processHeadingAccent:
       lang === "bn" ? "টেকনিশিয়ান বাছাই করি" : "Select Technicians",
@@ -146,7 +145,7 @@ export default function Technicians() {
         : "Our rigorous 4-step process to ensure top-quality service",
 
     // Team Grid
-    listBadge: lang === "bn" ? "👥 আমাদের বিশেষজ্ঞ দল" : "👥 Our Expert Team",
+    listBadge: lang === "bn" ? "আমাদের বিশেষজ্ঞ দল" : "Our Expert Team",
     listHeading:
       lang === "bn" ? "সবার সাথে পরিচিত হন" : "Meet Our Professionals",
     listSub:
@@ -157,7 +156,7 @@ export default function Technicians() {
     verifiedLabel: lang === "bn" ? "যাচাইকৃত" : "Verified",
 
     // Join CTA
-    joinBadge: lang === "bn" ? "💼 আমাদের সাথে যোগ দিন" : "💼 Join Us",
+    joinBadge: lang === "bn" ? "আমাদের সাথে যোগ দিন" : "Join Us",
     joinHeadingStart: lang === "bn" ? "একজন " : "Are You a ",
     joinHeadingAccent: lang === "bn" ? "টেকনিশিয়ান?" : "Skilled Technician?",
     joinSub:
@@ -388,9 +387,7 @@ export default function Technicians() {
             </div>
             <h1 className="mt-5 text-4xl font-bold text-[#111111] sm:text-5xl lg:text-6xl dark:text-white">
               {text.heroHeadingStart}
-              <span className="bg-gradient-to-r from-brand-500 to-pink-500 bg-clip-text text-transparent">
-                {text.heroHeadingAccent}
-              </span>
+              <span>{text.heroHeadingAccent}</span>
             </h1>
             <p className="mx-auto mt-6 max-w-3xl text-base leading-relaxed text-neutral-700 sm:text-lg dark:text-white/80">
               {text.desc}
@@ -457,9 +454,7 @@ export default function Technicians() {
             </div>
             <h2 className="mt-5 text-3xl font-bold text-[#111111] sm:text-4xl dark:text-white">
               {text.expertiseHeadingStart}
-              <span className="bg-gradient-to-r from-brand-500 to-pink-500 bg-clip-text text-transparent">
-                {text.expertiseHeadingAccent}
-              </span>
+              <span>{text.expertiseHeadingAccent}</span>
             </h2>
             <p className="mt-4 text-base text-neutral-600 dark:text-neutral-300">
               {text.expertiseSub}
@@ -508,9 +503,7 @@ export default function Technicians() {
             </div>
             <h2 className="mt-5 text-3xl font-bold text-[#111111] sm:text-4xl dark:text-white">
               {text.standardsHeadingStart}
-              <span className="bg-gradient-to-r from-brand-500 to-pink-500 bg-clip-text text-transparent">
-                {text.standardsHeadingAccent}
-              </span>
+              <span>{text.standardsHeadingAccent}</span>
             </h2>
             <p className="mt-4 text-base text-neutral-600 dark:text-neutral-300">
               {text.standardsSub}
@@ -562,9 +555,7 @@ export default function Technicians() {
             </div>
             <h2 className="mt-5 text-3xl font-bold text-[#111111] sm:text-4xl dark:text-white">
               {text.processHeadingStart}
-              <span className="bg-gradient-to-r from-brand-500 to-pink-500 bg-clip-text text-transparent">
-                {text.processHeadingAccent}
-              </span>
+              <span>{text.processHeadingAccent}</span>
             </h2>
             <p className="mt-4 text-base text-neutral-600 dark:text-neutral-300">
               {text.processSub}
