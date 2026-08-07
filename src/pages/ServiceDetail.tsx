@@ -460,7 +460,7 @@ export default function ServiceDetail() {
           </motion.aside>
         </div>
 
-        {/* Related Services */}
+        {/* Related Services - 3D Style */}
         <motion.section
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -471,37 +471,96 @@ export default function ServiceDetail() {
           <h2 className="text-2xl font-bold text-[#111111] sm:text-3xl dark:text-white">
             {text.youMightAlsoNeed}
           </h2>
-          <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-3">
+          <div className="mt-8 grid grid-cols-3 gap-3 sm:gap-4 md:grid-cols-3 lg:grid-cols-3">
             {related.map((r, i) => {
               const RIcon = iconMap[r.icon as keyof typeof iconMap];
               const relatedName = lang === "bn" && r.nameBn ? r.nameBn : r.name;
-              const relatedTagline =
-                lang === "bn" && r.taglineBn ? r.taglineBn : r.tagline;
+
+              // Match theme colors with home page
+              const relatedThemes = [
+                {
+                  iconBg: "from-yellow-200 to-amber-300",
+                  darkIconBg: "dark:from-yellow-500/30 dark:to-amber-500/20",
+                  color: "text-yellow-700 dark:text-yellow-300",
+                },
+                {
+                  iconBg: "from-blue-200 to-sky-300",
+                  darkIconBg: "dark:from-blue-500/30 dark:to-sky-500/20",
+                  color: "text-blue-700 dark:text-blue-300",
+                },
+                {
+                  iconBg: "from-pink-200 to-rose-300",
+                  darkIconBg: "dark:from-pink-500/30 dark:to-rose-500/20",
+                  color: "text-pink-700 dark:text-pink-300",
+                },
+              ];
+              const theme = relatedThemes[i % relatedThemes.length];
+
               return (
                 <motion.div
                   key={r.slug}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                  initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                  whileInView={{ opacity: 1, scale: 1, y: 0 }}
                   viewport={{ once: true, amount: 0.2 }}
                   transition={{ delay: i * 0.05, duration: 0.4 }}
+                  className="group"
                 >
                   <Link
                     to={`/services/${r.slug}`}
-                    className="group flex h-full flex-col rounded-2xl border border-neutral-100 bg-white p-5 shadow-sm transition-all hover:-translate-y-1 hover:border-brand-200 hover:shadow-lg dark:border-white/10 dark:bg-white/[0.03] dark:hover:border-brand-500/30"
+                    className="relative flex h-full flex-col items-center justify-start gap-2 overflow-hidden rounded-2xl border border-white/60 bg-white p-3 pt-4 text-center shadow-[0_4px_20px_rgba(15,23,42,0.06),inset_0_1px_0_rgba(255,255,255,0.8)] ring-1 ring-black/5 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl sm:p-4 dark:border-white/10 dark:bg-white/[0.03] dark:shadow-[0_4px_20px_rgba(0,0,0,0.3),inset_0_1px_0_rgba(255,255,255,0.05)] dark:ring-white/5"
                   >
-                    <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-brand-500/10 text-brand-600 dark:text-brand-300">
-                      <RIcon className="h-5 w-5" />
-                    </span>
-                    <h3 className="mt-4 text-base font-semibold text-[#111111] dark:text-white">
+                    {/* Top glossy shine */}
+                    <span className="pointer-events-none absolute inset-x-3 top-0 h-[2px] bg-gradient-to-r from-transparent via-white/90 to-transparent dark:via-white/20" />
+
+                    {/* Corner light spot */}
+                    <span className="pointer-events-none absolute -right-6 -top-6 h-16 w-16 rounded-full bg-white/40 blur-2xl dark:bg-white/5" />
+
+                    {/* 3D Icon Container */}
+                    <div
+                      className={`
+                relative flex h-14 w-14 items-center justify-center rounded-2xl
+                bg-gradient-to-br ${theme.iconBg} ${theme.darkIconBg}
+                shadow-[0_6px_16px_rgba(15,23,42,0.12),inset_0_2px_4px_rgba(255,255,255,0.6),inset_0_-2px_4px_rgba(0,0,0,0.05)]
+                ring-1 ring-white/60
+                transition-all duration-500 ease-out
+                group-hover:scale-110 group-hover:-rotate-6
+                sm:h-16 sm:w-16
+                dark:shadow-[0_6px_16px_rgba(0,0,0,0.4),inset_0_2px_4px_rgba(255,255,255,0.1),inset_0_-2px_4px_rgba(0,0,0,0.2)]
+                dark:ring-white/10
+              `}
+                    >
+                      {/* Inner highlight */}
+                      <span className="pointer-events-none absolute inset-2 rounded-xl bg-gradient-to-b from-white/40 to-transparent dark:from-white/10" />
+
+                      {/* 3D Image with fallback */}
+                      {r.icon3d ? (
+                        <img
+                          src={r.icon3d}
+                          alt={relatedName}
+                          className="relative h-10 w-10 object-contain drop-shadow-md sm:h-11 sm:w-11"
+                          loading="lazy"
+                          onError={(e) => {
+                            (e.target as HTMLImageElement).style.display =
+                              "none";
+                            const fallback = (e.target as HTMLImageElement)
+                              .nextElementSibling as HTMLElement;
+                            if (fallback) fallback.style.display = "block";
+                          }}
+                        />
+                      ) : null}
+
+                      {/* Fallback icon */}
+                      <RIcon
+                        className={`relative h-6 w-6 sm:h-7 sm:w-7 ${theme.color} drop-shadow-sm`}
+                        strokeWidth={2.2}
+                        style={{ display: r.icon3d ? "none" : "block" }}
+                      />
+                    </div>
+
+                    {/* Service Name */}
+                    <p className="relative mt-1 line-clamp-2 min-h-[2.2rem] px-0.5 text-center text-[11px] font-semibold leading-tight text-neutral-800 sm:text-xs dark:text-neutral-100">
                       {relatedName}
-                    </h3>
-                    <p className="mt-1 flex-1 text-xs leading-relaxed text-neutral-500 dark:text-neutral-400">
-                      {relatedTagline}
                     </p>
-                    <span className="mt-4 flex items-center gap-1 text-xs font-semibold text-brand-600 dark:text-brand-300">
-                      {text.viewDetails}
-                      <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
-                    </span>
                   </Link>
                 </motion.div>
               );

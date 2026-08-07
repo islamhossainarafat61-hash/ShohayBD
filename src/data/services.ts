@@ -24,6 +24,7 @@ export interface ServiceItem {
   name: string;
   nameBn: string;
   icon: string;
+  icon3d?: string;
   tagline: string;
   taglineBn: string;
   shortDescription: string;
@@ -50,6 +51,7 @@ export const services: ServiceItem[] = [
     name: "Electrician",
     nameBn: "ইলেকট্রিশিয়ান",
     icon: "Zap",
+    icon3d: "/icons/electrician.jpeg",
     tagline: "Safe & Certified Electrical Repairs",
     taglineBn: "নিরাপদ ও প্রত্যয়িত ইলেকট্রিক্যাল মেরামত",
     shortDescription:
@@ -236,6 +238,7 @@ export const services: ServiceItem[] = [
     name: "Plumbing",
     nameBn: "প্লাম্বিং",
     icon: "Wrench",
+    icon3d: "/icons/plumbing.png",
     tagline: "Leak-Free, Stress-Free Plumbing",
     taglineBn: "লিক-মুক্ত, দুশ্চিন্তা-মুক্ত প্লাম্বিং",
     shortDescription:
@@ -420,6 +423,7 @@ export const services: ServiceItem[] = [
     name: "AC Service",
     nameBn: "এসি সার্ভিস",
     icon: "Fan",
+    icon3d: "/icons/ac-service.png",
     tagline: "Cooler Homes, Healthier Air",
     taglineBn: "ঠান্ডা ঘর, স্বাস্থ্যকর বাতাস",
     shortDescription:
@@ -606,6 +610,7 @@ export const services: ServiceItem[] = [
     name: "Home Cleaning",
     nameBn: "হোম ক্লিনিং",
     icon: "Sparkles",
+    icon3d: "/icons/home-cleaning.png",
     tagline: "A Spotless Home, Effortlessly",
     taglineBn: "নিখুঁত পরিষ্কার ঘর, অনায়াসে",
     shortDescription:
@@ -784,190 +789,6 @@ export const services: ServiceItem[] = [
   },
 
   // ═══════════════════════════════════════════════════
-  // 5. DEEP CLEANING
-  // ═══════════════════════════════════════════════════
-  {
-    slug: "deep-cleaning",
-    name: "Deep Cleaning",
-    nameBn: "ডিপ ক্লিনিং",
-    icon: "SprayCan",
-    tagline: "Deep Clean. Deep Fresh.",
-    taglineBn: "গভীর পরিষ্কার। গভীর সতেজতা।",
-    shortDescription:
-      "Intensive sanitation for kitchens, bathrooms, sofas, carpets and hard-to-reach areas.",
-    shortDescriptionBn:
-      "রান্নাঘর, বাথরুম, সোফা, কার্পেট এবং হার্ড-টু-রিচ জায়গায় নিবিড় স্যানিটেশন।",
-    description: [
-      "Our deep cleaning service goes far beyond routine cleaning — targeting grease, grime, stains and hidden dirt in every corner of your home. We use industrial-grade equipment and specialized cleaning agents for maximum results.",
-      "Ideal for festival preparation, seasonal cleaning, post-construction cleanup, or homes that need an intensive refresh. Our team spends extra time on high-touch surfaces, deep crevices, and neglected areas.",
-    ],
-    descriptionBn: [
-      "আমাদের ডিপ ক্লিনিং সার্ভিস নিয়মিত পরিষ্কারের চেয়েও অনেক বেশি — আপনার ঘরের প্রতিটি কোণে গ্রীজ, ময়লা, দাগ এবং লুকানো নোংরা দূর করি। সর্বাধিক ফলাফলের জন্য আমরা ইন্ডাস্ট্রিয়াল-গ্রেড সরঞ্জাম এবং বিশেষায়িত ক্লিনিং এজেন্ট ব্যবহার করি।",
-      "উৎসব প্রস্তুতি, মৌসুমী পরিষ্কার, নির্মাণ-পরবর্তী পরিষ্কার, বা যে ঘরগুলোর নিবিড় ফ্রেশনেস দরকার — তার জন্য আদর্শ। আমাদের টিম উচ্চ-স্পর্শ পৃষ্ঠ, গভীর ফাঁক এবং অবহেলিত এলাকায় অতিরিক্ত সময় ব্যয় করে।",
-    ],
-    features: [
-      "Kitchen degreasing",
-      "Bathroom deep sanitation",
-      "Sofa & carpet shampooing",
-      "Wall & ceiling cobweb removal",
-      "Floor scrubbing & polishing",
-      "Odor & stain removal",
-    ],
-    featuresBn: [
-      "রান্নাঘরের গ্রীজ পরিষ্কার",
-      "বাথরুম ডিপ স্যানিটেশন",
-      "সোফা ও কার্পেট শ্যাম্পুইং",
-      "দেওয়াল ও ছাদের মাকড়সার জাল পরিষ্কার",
-      "মেঝে স্ক্রাবিং ও পলিশিং",
-      "গন্ধ ও দাগ দূরীকরণ",
-    ],
-    priceNote: "Custom quote based on home size and condition.",
-    priceNoteBn: "ঘরের আকার ও অবস্থার ভিত্তিতে কাস্টম quote।",
-    detailedFeatures: [
-      {
-        title: "Kitchen Degreasing",
-        titleBn: "রান্নাঘরের গ্রীজ পরিষ্কার",
-        description:
-          "Complete grease removal from stove, chimney, tiles, walls, and cabinet interiors using powerful degreasers.",
-        descriptionBn:
-          "শক্তিশালী ডিগ্রিজার ব্যবহার করে চুলা, চিমনি, টাইলস, দেওয়াল এবং ক্যাবিনেট থেকে সম্পূর্ণ গ্রীজ অপসারণ।",
-      },
-      {
-        title: "Bathroom Deep Sanitation",
-        titleBn: "বাথরুম ডিপ স্যানিটেশন",
-        description:
-          "Removal of tough stains, limescale, mildew, and complete disinfection of all bathroom surfaces.",
-        descriptionBn:
-          "কঠিন দাগ, লাইমস্কেল, ছত্রাক অপসারণ এবং সব বাথরুম পৃষ্ঠের সম্পূর্ণ জীবাণুমুক্তকরণ।",
-      },
-      {
-        title: "Sofa & Carpet Shampooing",
-        titleBn: "সোফা ও কার্পেট শ্যাম্পুইং",
-        description:
-          "Professional steam cleaning and shampooing of sofas, chairs, mattresses, and carpets to remove dust mites.",
-        descriptionBn:
-          "ধূলিকণা দূর করতে সোফা, চেয়ার, ম্যাট্রেস এবং কার্পেটের পেশাদার স্টিম ক্লিনিং এবং শ্যাম্পুইং।",
-      },
-      {
-        title: "Wall & Ceiling Cleaning",
-        titleBn: "দেওয়াল ও ছাদ পরিষ্কার",
-        description:
-          "Cobweb removal, wall spot cleaning, ceiling dusting, and ventilator/fan blade cleaning.",
-        descriptionBn:
-          "মাকড়সার জাল অপসারণ, দেওয়ালের দাগ পরিষ্কার, ছাদের ধুলো ঝাড়া এবং ভেন্টিলেটর/ফ্যান ব্লেড পরিষ্কার।",
-      },
-      {
-        title: "Floor Scrubbing & Polishing",
-        titleBn: "মেঝে স্ক্রাবিং ও পলিশিং",
-        description:
-          "Heavy-duty machine scrubbing of tiles, marble polishing, and grout cleaning for a like-new shine.",
-        descriptionBn:
-          "নতুনের মতো চকচকে করতে টাইলসের ভারী মেশিন স্ক্রাবিং, মার্বেল পলিশিং এবং গ্রাউট পরিষ্কার।",
-      },
-      {
-        title: "Odor Elimination",
-        titleBn: "গন্ধ দূরীকরণ",
-        description:
-          "Professional odor treatment for pet smells, kitchen odors, mildew, and general freshness restoration.",
-        descriptionBn:
-          "পোষা প্রাণীর গন্ধ, রান্নাঘরের গন্ধ, ছত্রাক এবং সাধারণ সতেজতা পুনরুদ্ধারের জন্য পেশাদার গন্ধ চিকিৎসা।",
-      },
-    ],
-    benefits: [
-      "Industrial-grade equipment",
-      "Deep sanitization technology",
-      "Removes 99.9% germs & bacteria",
-      "Non-toxic cleaning agents",
-      "Trained cleaning specialists",
-      "Complete home transformation",
-    ],
-    benefitsBn: [
-      "ইন্ডাস্ট্রিয়াল-গ্রেড সরঞ্জাম",
-      "ডিপ স্যানিটাইজেশন প্রযুক্তি",
-      "৯৯.৯% জীবাণু ও ব্যাকটেরিয়া দূর করে",
-      "বিষমুক্ত ক্লিনিং এজেন্ট",
-      "প্রশিক্ষিত ক্লিনিং বিশেষজ্ঞ",
-      "সম্পূর্ণ ঘর রূপান্তর",
-    ],
-    process: [
-      {
-        step: "Home Assessment",
-        stepBn: "ঘর মূল্যায়ন",
-        description:
-          "Share photos and details of your home. We provide a customized deep cleaning plan.",
-        descriptionBn:
-          "আপনার ঘরের ছবি এবং বিবরণ শেয়ার করুন। আমরা একটি কাস্টমাইজড ডিপ ক্লিনিং প্ল্যান প্রদান করি।",
-      },
-      {
-        step: "Confirm & Schedule",
-        stepBn: "কনফার্ম ও সময় নির্ধারণ",
-        description:
-          "Approve the quote and pick your preferred date. Deep cleaning takes 6-10 hours typically.",
-        descriptionBn:
-          "quote অনুমোদন করুন এবং পছন্দের তারিখ বেছে নিন। ডিপ ক্লিনিং সাধারণত ৬-১০ ঘণ্টা লাগে।",
-      },
-      {
-        step: "Team of Experts",
-        stepBn: "বিশেষজ্ঞ টিম",
-        description:
-          "Our specialized team arrives with industrial equipment and premium cleaning agents.",
-        descriptionBn:
-          "আমাদের বিশেষায়িত টিম ইন্ডাস্ট্রিয়াল সরঞ্জাম এবং প্রিমিয়াম ক্লিনিং এজেন্ট নিয়ে পৌঁছায়।",
-      },
-      {
-        step: "Sparkling Clean Home",
-        stepBn: "ঝকঝকে পরিষ্কার ঘর",
-        description:
-          "Enjoy a completely refreshed, deep-cleaned home that feels brand new.",
-        descriptionBn:
-          "সম্পূর্ণ সতেজ, ডিপ-ক্লিন করা ঘর উপভোগ করুন যা একদম নতুনের মতো লাগবে।",
-      },
-    ],
-    faqs: [
-      {
-        question: "How is deep cleaning different from regular cleaning?",
-        questionBn: "ডিপ ক্লিনিং নিয়মিত পরিষ্কারের চেয়ে কীভাবে আলাদা?",
-        answer:
-          "Deep cleaning targets grease, hidden dirt, and hard-to-reach areas using industrial equipment. It includes appliance interiors, wall spots, ceiling, and detailed sanitization — much more thorough than regular cleaning.",
-        answerBn:
-          "ডিপ ক্লিনিং ইন্ডাস্ট্রিয়াল সরঞ্জাম ব্যবহার করে গ্রীজ, লুকানো নোংরা এবং হার্ড-টু-রিচ এলাকা লক্ষ্য করে। এতে যন্ত্রপাতির অভ্যন্তর, দেওয়ালের দাগ, ছাদ এবং বিস্তারিত স্যানিটাইজেশন অন্তর্ভুক্ত — নিয়মিত পরিষ্কারের চেয়ে অনেক বেশি পুঙ্খানুপুঙ্খ।",
-      },
-      {
-        question: "How often should I get deep cleaning done?",
-        questionBn: "কতবার ডিপ ক্লিনিং করানো উচিত?",
-        answer:
-          "We recommend deep cleaning every 3-4 months for most homes. Homes with pets, children, or heavy usage may benefit from bi-monthly deep cleaning.",
-        answerBn:
-          "আমরা বেশিরভাগ ঘরের জন্য প্রতি ৩-৪ মাসে ডিপ ক্লিনিং করার পরামর্শ দিই। পোষা প্রাণী, বাচ্চা বা ভারী ব্যবহারের ঘরগুলো দ্বি-মাসিক ডিপ ক্লিনিং থেকে উপকৃত হতে পারে।",
-      },
-      {
-        question: "How long does deep cleaning take?",
-        questionBn: "ডিপ ক্লিনিং কতক্ষণ লাগে?",
-        answer:
-          "Typically 6-10 hours depending on home size and condition. Larger homes may require 2 days or a bigger team.",
-        answerBn:
-          "সাধারণত ৬-১০ ঘণ্টা লাগে ঘরের আকার এবং অবস্থার উপর নির্ভর করে। বড় ঘরের জন্য ২ দিন বা বড় টিম লাগতে পারে।",
-      },
-      {
-        question: "Do I need to move furniture before cleaning?",
-        questionBn: "পরিষ্কারের আগে কি আসবাবপত্র সরাতে হবে?",
-        answer:
-          "No, our team handles moving light furniture during cleaning. For heavy items, we clean around them or you can help move them.",
-        answerBn:
-          "না, পরিষ্কারের সময় আমাদের টিম হালকা আসবাবপত্র সরানো হ্যান্ডেল করে। ভারী জিনিসের জন্য, আমরা সেগুলোর আশেপাশে পরিষ্কার করি বা আপনি সরাতে সাহায্য করতে পারেন।",
-      },
-      {
-        question: "Is deep cleaning safe for allergies?",
-        questionBn: "ডিপ ক্লিনিং কি অ্যালার্জির জন্য নিরাপদ?",
-        answer:
-          "Yes! Deep cleaning removes dust mites, allergens, mold, and pet dander that trigger allergies. We use hypoallergenic products on request.",
-        answerBn:
-          "হ্যাঁ! ডিপ ক্লিনিং ধূলিকণা, অ্যালার্জেন, ছত্রাক এবং পোষা প্রাণীর খুশকি দূর করে যা অ্যালার্জি ট্রিগার করে। অনুরোধে আমরা হাইপোঅ্যালার্জেনিক পণ্য ব্যবহার করি।",
-      },
-    ],
-  },
-
-  // ═══════════════════════════════════════════════════
   // 6. DRY WASH
   // ═══════════════════════════════════════════════════
   {
@@ -975,6 +796,7 @@ export const services: ServiceItem[] = [
     name: "Dry Wash",
     nameBn: "ড্রাই ওয়াশ",
     icon: "Shirt",
+    icon3d: "/icons/dry-wash.png",
     tagline: "Premium Garment Care",
     taglineBn: "প্রিমিয়াম কাপড়ের যত্ন",
     shortDescription:
@@ -1160,6 +982,7 @@ export const services: ServiceItem[] = [
     name: "Home Shifting",
     nameBn: "হোম শিফটিং",
     icon: "Truck",
+    icon3d: "/icons/home-shifting.png",
     tagline: "Move Smart, Stress-Free",
     taglineBn: "স্মার্ট মুভ, দুশ্চিন্তা-মুক্ত",
     shortDescription:
@@ -1344,6 +1167,7 @@ export const services: ServiceItem[] = [
     name: "Salon at Home",
     nameBn: "সেলুন অ্যাট হোম",
     icon: "Scissors",
+    icon3d: "/icons/salon.png",
     tagline: "Salon Luxury, Home Comfort",
     taglineBn: "সেলুনের বিলাসিতা, ঘরের আরাম",
     shortDescription:
@@ -1528,6 +1352,7 @@ export const services: ServiceItem[] = [
     name: "Beauty Service",
     nameBn: "বিউটি সার্ভিস",
     icon: "Gem",
+    icon3d: "/icons/beauty.png",
     tagline: "Look Radiant, Feel Confident",
     taglineBn: "উজ্জ্বল দেখান, আত্মবিশ্বাসী অনুভব করুন",
     shortDescription:

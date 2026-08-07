@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import {
   BadgeCheck,
   CheckCircle2,
@@ -194,61 +195,79 @@ export default function Technicians() {
     },
   ];
 
-  // Expertise Categories (9 services)
+  // Expertise Categories (9 services) - with 3D icons and slugs
   const expertiseCategories = [
     {
+      slug: "electrician",
       icon: Zap,
+      icon3d: "/icons/electrician.png",
       label: lang === "bn" ? "ইলেকট্রিশিয়ান" : "Electrician",
-      color: "text-yellow-600 dark:text-yellow-400",
-      bg: "bg-yellow-500/10",
+      iconBg: "from-yellow-200 to-amber-300",
+      darkIconBg: "dark:from-yellow-500/30 dark:to-amber-500/20",
+      color: "text-yellow-700 dark:text-yellow-300",
     },
     {
+      slug: "plumbing",
       icon: Wrench,
+      icon3d: "/icons/plumbing.png",
       label: lang === "bn" ? "প্লাম্বিং" : "Plumbing",
-      color: "text-blue-600 dark:text-blue-400",
-      bg: "bg-blue-500/10",
+      iconBg: "from-blue-200 to-sky-300",
+      darkIconBg: "dark:from-blue-500/30 dark:to-sky-500/20",
+      color: "text-blue-700 dark:text-blue-300",
     },
     {
+      slug: "ac-service",
       icon: Sparkles,
+      icon3d: "/icons/ac-service.png",
       label: lang === "bn" ? "এসি সার্ভিস" : "AC Service",
-      color: "text-cyan-600 dark:text-cyan-400",
-      bg: "bg-cyan-500/10",
+      iconBg: "from-cyan-200 to-teal-300",
+      darkIconBg: "dark:from-cyan-500/30 dark:to-teal-500/20",
+      color: "text-cyan-700 dark:text-cyan-300",
     },
     {
+      slug: "home-cleaning",
       icon: Sparkles,
+      icon3d: "/icons/home-cleaning.png",
       label: lang === "bn" ? "হোম ক্লিনিং" : "Home Cleaning",
-      color: "text-green-600 dark:text-green-400",
-      bg: "bg-green-500/10",
+      iconBg: "from-green-200 to-emerald-300",
+      darkIconBg: "dark:from-green-500/30 dark:to-emerald-500/20",
+      color: "text-green-700 dark:text-green-300",
     },
     {
+      slug: "dry-wash",
       icon: Sparkles,
-      label: lang === "bn" ? "ডিপ ক্লিনিং" : "Deep Cleaning",
-      color: "text-teal-600 dark:text-teal-400",
-      bg: "bg-teal-500/10",
-    },
-    {
-      icon: Sparkles,
+      icon3d: "/icons/dry-wash.png",
       label: lang === "bn" ? "ড্রাই ওয়াশ" : "Dry Wash",
-      color: "text-indigo-600 dark:text-indigo-400",
-      bg: "bg-indigo-500/10",
+      iconBg: "from-indigo-200 to-violet-300",
+      darkIconBg: "dark:from-indigo-500/30 dark:to-violet-500/20",
+      color: "text-indigo-700 dark:text-indigo-300",
     },
     {
+      slug: "home-shifting",
       icon: Sparkles,
+      icon3d: "/icons/home-shifting.png",
       label: lang === "bn" ? "হোম শিফটিং" : "Home Shifting",
-      color: "text-orange-600 dark:text-orange-400",
-      bg: "bg-orange-500/10",
+      iconBg: "from-orange-200 to-amber-300",
+      darkIconBg: "dark:from-orange-500/30 dark:to-amber-500/20",
+      color: "text-orange-700 dark:text-orange-300",
     },
     {
+      slug: "salon-at-home",
       icon: Sparkles,
+      icon3d: "/icons/salon.png",
       label: lang === "bn" ? "সেলুন অ্যাট হোম" : "Salon at Home",
-      color: "text-pink-600 dark:text-pink-400",
-      bg: "bg-pink-500/10",
+      iconBg: "from-pink-200 to-rose-300",
+      darkIconBg: "dark:from-pink-500/30 dark:to-rose-500/20",
+      color: "text-pink-700 dark:text-pink-300",
     },
     {
+      slug: "beauty-service",
       icon: Sparkles,
+      icon3d: "/icons/beauty.png",
       label: lang === "bn" ? "বিউটি সার্ভিস" : "Beauty Service",
-      color: "text-rose-600 dark:text-rose-400",
-      bg: "bg-rose-500/10",
+      iconBg: "from-rose-200 to-pink-300",
+      darkIconBg: "dark:from-rose-500/30 dark:to-pink-500/20",
+      color: "text-rose-700 dark:text-rose-300",
     },
   ];
 
@@ -461,24 +480,72 @@ export default function Technicians() {
             </p>
           </motion.div>
 
-          <div className="mt-12 grid grid-cols-3 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-9">
+          <div className="mt-12 grid grid-cols-3 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-8">
             {expertiseCategories.map((cat, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
+                initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                whileInView={{ opacity: 1, scale: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
-                transition={{ delay: i * 0.04, duration: 0.3 }}
-                className="flex flex-col items-center gap-2 rounded-2xl border border-neutral-100 bg-white p-3 shadow-sm transition-all hover:-translate-y-1 hover:shadow-md dark:border-white/10 dark:bg-white/[0.03] sm:p-4"
+                transition={{ delay: i * 0.04, duration: 0.35 }}
+                className="group"
               >
-                <span
-                  className={`flex h-11 w-11 items-center justify-center rounded-xl ${cat.bg} ${cat.color}`}
+                <Link
+                  to={`/services/${cat.slug}`}
+                  className="relative flex h-full flex-col items-center justify-start gap-2 overflow-hidden rounded-2xl border border-white/60 bg-white p-3 pt-4 text-center shadow-[0_4px_20px_rgba(15,23,42,0.06),inset_0_1px_0_rgba(255,255,255,0.8)] ring-1 ring-black/5 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl sm:p-4 dark:border-white/10 dark:bg-white/[0.03] dark:shadow-[0_4px_20px_rgba(0,0,0,0.3),inset_0_1px_0_rgba(255,255,255,0.05)] dark:ring-white/5"
                 >
-                  <cat.icon className="h-5 w-5" strokeWidth={2} />
-                </span>
-                <p className="text-center text-[11px] font-semibold text-neutral-700 sm:text-xs dark:text-neutral-200">
-                  {cat.label}
-                </p>
+                  {/* Top glossy shine */}
+                  <span className="pointer-events-none absolute inset-x-3 top-0 h-[2px] bg-gradient-to-r from-transparent via-white/90 to-transparent dark:via-white/20" />
+
+                  {/* Corner light spot */}
+                  <span className="pointer-events-none absolute -right-6 -top-6 h-16 w-16 rounded-full bg-white/40 blur-2xl dark:bg-white/5" />
+
+                  {/* 3D Icon Container */}
+                  <div
+                    className={`
+            relative flex h-14 w-14 items-center justify-center rounded-2xl
+            bg-gradient-to-br ${cat.iconBg} ${cat.darkIconBg}
+            shadow-[0_6px_16px_rgba(15,23,42,0.12),inset_0_2px_4px_rgba(255,255,255,0.6),inset_0_-2px_4px_rgba(0,0,0,0.05)]
+            ring-1 ring-white/60
+            transition-all duration-500 ease-out
+            group-hover:scale-110 group-hover:-rotate-6
+            sm:h-16 sm:w-16
+            dark:shadow-[0_6px_16px_rgba(0,0,0,0.4),inset_0_2px_4px_rgba(255,255,255,0.1),inset_0_-2px_4px_rgba(0,0,0,0.2)]
+            dark:ring-white/10
+          `}
+                  >
+                    {/* Inner highlight */}
+                    <span className="pointer-events-none absolute inset-2 rounded-xl bg-gradient-to-b from-white/40 to-transparent dark:from-white/10" />
+
+                    {/* 3D Image with fallback to lucide icon */}
+                    {cat.icon3d ? (
+                      <img
+                        src={cat.icon3d}
+                        alt={cat.label}
+                        className="relative h-10 w-10 object-contain drop-shadow-md sm:h-11 sm:w-11"
+                        loading="lazy"
+                        onError={(e) => {
+                          (e.target as HTMLImageElement).style.display = "none";
+                          const fallback = (e.target as HTMLImageElement)
+                            .nextElementSibling as HTMLElement;
+                          if (fallback) fallback.style.display = "block";
+                        }}
+                      />
+                    ) : null}
+
+                    {/* Fallback icon */}
+                    <cat.icon
+                      className={`relative h-6 w-6 sm:h-7 sm:w-7 ${cat.color} drop-shadow-sm`}
+                      strokeWidth={2.2}
+                      style={{ display: cat.icon3d ? "none" : "block" }}
+                    />
+                  </div>
+
+                  {/* Label */}
+                  <p className="relative mt-1 line-clamp-2 min-h-[2.2rem] px-0.5 text-center text-[10px] font-semibold leading-tight text-neutral-800 sm:text-[11px] dark:text-neutral-100">
+                    {cat.label}
+                  </p>
+                </Link>
               </motion.div>
             ))}
           </div>
